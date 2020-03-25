@@ -1,7 +1,6 @@
 Flask
 request
 jsonify
-pickle
 uWSGI
 pandas
 numpy
