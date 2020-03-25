@@ -1,0 +1,8 @@
+Flask
+uWSGI
+pandas
+numpy
+matplotlib
+seaborn
+sklearn
+scipy
