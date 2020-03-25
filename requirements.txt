@@ -1,4 +1,8 @@
 Flask
+request
+jsonify
+render_template
+pickle
 uWSGI
 pandas
 numpy
