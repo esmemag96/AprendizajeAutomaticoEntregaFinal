@@ -1,36 +1,33 @@
 <!DOCTYPE html>
-<html >
+<html>
+
 <head>
   <meta charset="UTF-8">
-  <title>Deployment Tutorial 1</title>
+  <title>Teachers grade</title>
   <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
-<link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
-<link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
-<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
-<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-  
+  <link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="/static/style.css" type='text/css'>
+
 </head>
 
 <body style="background: #000;">
- <div class="login">
-	<h1>Teachers grade</h1>
-
-     <!-- Main Input For Receiving Query to our ML -->
-    <form action="{{ url_for('predict')}}"method="post">
-    	<input type="text" name="rate" placeholder="Teacher ID" required="required" />
-        <input type="text" name="sales in first month" placeholder="Fisrt Year Grade" required="required" />
-		<input type="text" name="sales in second month" placeholder="Second Year Grade" required="required" />
-
-
-        <button type="submit" class="btn btn-primary btn-block btn-large">Final score should be</button>
-    </form>
-
-   <br>
-   <br>
-   {{ prediction_text }}
-
- </div>
-
-
+  <div class="login">
+    <h1>Teachers grade</h1>
+    <!-- Main Input For Receiving Query to our ML -->
+    <input type="number" name="TeacherID" placeholder="Teacher ID" id="TeacherID" required="required" min="1" max="3" />
+    <input type="number" name="1stGrade" placeholder="Fisrt Year Grade (1 to 100)" id="1stGrade" required="required"
+      min="1" max="100" />
+    <input type="number" name="2ndGrade" placeholder="Second Year Grade (1 to 100)" id="2ndGrade" required="required"
+      min="1" max="100" />
+    <button class="btn btn-primary btn-block btn-large" onclick="sendRequest()">Final score should be</button>
+    <button class="btn btn-primary btn-block btn-large" onclick="trainModelRequest()">Train Model</button>
+    <br>
+    <br>
+    <h3 id="prediction"></h3>
+    <h3 id="training"></h3>
+  </div>
 </body>
+<script src="/static/app.js" charset="utf-8"></script>
 </html>
