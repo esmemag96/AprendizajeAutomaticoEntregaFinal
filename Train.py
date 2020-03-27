@@ -2,9 +2,9 @@ import numpy as np
 import matplotlib.pyplot as plt
 import pandas as pd
 import pickle
+from sklearn.model_selection import train_test_split
 
 def Train():
-	print("saef")
 	pb_df = pd.read_csv("train.csv")
 
 	evaluacion1 = pb_df.iloc[:, 23:32].sum(axis=1)
@@ -14,15 +14,15 @@ def Train():
 	evaluacion3 = pb_df.iloc[:, 5:14].sum(axis=1)
 	pb_df.insert(1, "score1", evaluacion3, True)
 
-	teacher1=pb_df.loc[pb_df['instr'] == 1]
-	X = teacher1.iloc[:, :3]
-
-	y = teacher1.iloc[:, 3]
-
+	X = pb_df.iloc[:, :3]
+	y = pb_df.iloc[:, 3]
+	
+	X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=0)
+	
 	from sklearn.linear_model import LinearRegression
 	regressor = LinearRegression()
 	
-	regressor.fit(X, y)
+	regressor.fit(X_train,y_train)
 	
 	pickle.dump(regressor, open('model.pkl','wb'))
 	
