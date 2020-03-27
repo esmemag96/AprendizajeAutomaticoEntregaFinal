@@ -1,46 +1,46 @@
-function sendRequest() {
+function sendRequest() {//Function to request prediction from server.
+    //Input elements on the HTML(DOM)
     var grade1 = parseInt(document.getElementById("1stGrade").value)
     var grade2 = parseInt(document.getElementById("2ndGrade").value)
     var id = parseInt(document.getElementById("TeacherID").value)
-    console.log(id)
     // Type check
-    if (grade1 < 1 || grade1 > 100 || grade2 < 1 || grade2 > 100 || id > 3 || id < 1 || isNaN(id) || isNaN(grade1) || isNaN(grade2)) {
-        alert("La calificacion tiene que estar entre 1 y 100 y el ID tiene que ser un numero del 1 al 3 (Solo hay 3 profesores)");
-    } else {
+    if (grade1 < 1 || grade1 > 100 || grade2 < 1 || grade2 > 100 || id > 3 || id < 1 || isNaN(id) || isNaN(grade1) || isNaN(grade2)) {//Type check before sending it to the api
+        alert("The grades must be between 1 and 100 and the ID must be between 1 and 3 (Only three professors)");
+    } else {//If all the inputs are correct, then the grades are formated to be compatible with the model's input.
         grade1 = grade1 * .45
         grade2 = grade2 * .45
-        var data = JSON.stringify({ 'TeacherID': id, "1stGrade": grade1, "2ndGrade": grade2 })
-        var xhttp = new XMLHttpRequest();
-        xhttp.onreadystatechange = function () {
-            if (this.readyState == 4 && this.status == 200) {
-                result = document.getElementById("prediction")
-                var json = JSON.parse(xhttp.responseText);
-                console.log(json.prediction)
-                result.textContent = "The grade of the professor next year should be: " + (json.prediction / .45);
+        var data = JSON.stringify({ 'TeacherID': id, "1stGrade": grade1, "2ndGrade": grade2 })//JSON object to be sent to the api.
+        var xhttp = new XMLHttpRequest();//New HMLHTTP request (Like ajax)
+        xhttp.onreadystatechange = function () {//Clousure that is called when the response from the api is receved.
+            result = document.getElementById("prediction")//DOM element in the HTML to display the result.
+            if (this.readyState == 4 && this.status == 200) {//If the state of the response is correct, then:
+                var json = JSON.parse(xhttp.responseText);//Parsed JSON.
+                result.textContent = "The grade of the professor next year should be: " + (json.prediction / .45);//Result added to the HTML
+            }else{
+                result.textContent = "Something Went wrong, please try again";//Result added to the HTML
             }
         };
-        xhttp.open("POST", "http://localhost:5000/predict", true);
-        xhttp.setRequestHeader("Content-type", "application/json");
-        xhttp.send(data);
+        xhttp.open("POST", "http://localhost:5000/predict", true);//Open connection to the server, at route /predict.
+        xhttp.setRequestHeader("Content-type", "application/json");//Set the content type as JSON.
+        xhttp.send(data);//Send data.
     }
 }
 
-function trainModelRequest() {
-    var data = JSON.stringify({ 'train': true })
-    var xhttp = new XMLHttpRequest();
-    xhttp.onreadystatechange = function () {
-        if (this.readyState == 4 && this.status == 200) {
-            result = document.getElementById("training")
-            var json = JSON.parse(xhttp.responseText);
-            console.log(json.trainingComplete)
-            if (json.trainingComplete) {
+function trainModelRequest() {//Function to request the server a new trained model.
+    var data = JSON.stringify({ 'train': true })//JSON object to be sent to the api.
+    var xhttp = new XMLHttpRequest();//New HMLHTTP request (Like ajax)
+    xhttp.onreadystatechange = function () {//Clousure that is called when the response from the api is receved.
+        result = document.getElementById("training")//DOM element in the HTML to display the training result.
+        if (this.readyState == 4 && this.status == 200) {//If the state of the response is correct, then:
+            var json = JSON.parse(xhttp.responseText);//Parsed JSON.
+            if (json.trainingComplete) {//if the training is successfull, then display a success message.
                 result.textContent = "The training was made succesfully";
-            } else {
+            } else {//Else, display error message
                 result.textContent = "The training failed";
             }
         }
     };
-    xhttp.open("POST", "http://localhost:5000/train", true);
-    xhttp.setRequestHeader("Content-type", "application/json");
-    xhttp.send(data);
+    xhttp.open("POST", "http://localhost:5000/train", true);//Open connection to the server, at route /train.
+    xhttp.setRequestHeader("Content-type", "application/json");//Set the content type as JSON.
+    xhttp.send(data);//Send data.
 }
