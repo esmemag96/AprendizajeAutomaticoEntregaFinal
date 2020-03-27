@@ -2,8 +2,9 @@ function sendRequest() {
     var grade1 = parseInt(document.getElementById("1stGrade").value)
     var grade2 = parseInt(document.getElementById("2ndGrade").value)
     var id = parseInt(document.getElementById("TeacherID").value)
+    console.log(id)
     // Type check
-    if (grade1 < 1 || grade1 > 100 || grade2 < 1 || grade2 > 100 || id > 3 || id < 1) {
+    if (grade1 < 1 || grade1 > 100 || grade2 < 1 || grade2 > 100 || id > 3 || id < 1 || isNaN(id) || isNaN(grade1) || isNaN(grade2)) {
         alert("La calificacion tiene que estar entre 1 y 100 y el ID tiene que ser un numero del 1 al 3 (Solo hay 3 profesores)");
     } else {
         grade1 = grade1 * .45
