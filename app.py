@@ -31,11 +31,5 @@ def trainModel():
     else:#Else call the function 'Train()'
         return json.dumps({'trainingComplete':Train.Train()})#Return a json object with the result of the call (T or F)
 
-@app.route('/results',methods=['POST'])
-def results():
-    data = request.get_json(force=True)
-    prediction = model.predict([np.array(list(data.values()))])
-    output = prediction[0]
-    return jsonify(output)
 if __name__ == "__main__":
     app.run(debug=True)
