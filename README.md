@@ -46,7 +46,8 @@ Esta es una explicación más detallada de los archivos y funciones principales 
 App.py
 
 Train.py
-### App.py: Este archivo es la API que se encarga de manejar las solicitudes que vienen del Front End.
+### App.py: 
+Este archivo es la API que se encarga de manejar las solicitudes que vienen del Front End.
 
 Función `home()`:  Se utiliza para que la API envíe el archivo index.html.
 
@@ -69,10 +70,15 @@ Se ajusta el modelo de regresión lineal múltiple a nuestro conjunto de entrena
 
 ### style.css:
 Hoja de estilos para el HTML.
-### app.js:Archivo JavaScript que se encarga de realizar las solicitudes al servidor Flask.
+### app.js:
+Archivo JavaScript que se encarga de realizar las solicitudes al servidor Flask.
+
 Funcion `sendRequest()`:Se encarga de recopilar las entradas del usuario en la forma del HTML, formatearlas en formato JSON y de enviarlas asincronamente, asimismo de esperar su respuesta para mostrarla al usuario.
+
 Funcion `trainModelRequest()`:Se encarga de enviar una solicitud a la API para que vuelva a entrenar el modelo.
-### index.html: HTML que contiene una pequeña forma para suministrar a la API con la información que necesita, asimismo contiene un botón que sirve para decirle a la API que debe entrenar el modelo nuevamente.
+
+### index.html: 
+HTML que contiene una pequeña forma para suministrar a la API con la información que necesita, asimismo contiene un botón que sirve para decirle a la API que debe entrenar el modelo nuevamente.
 
 ## Archivos Docker:
 Dockerfile-flask
@@ -87,10 +93,16 @@ requirements.txt
 
 docker-compose.yml
 
-### Dockerfile-nginx: Dockerfile para el contenedor de NGINX.
-### Dockerfile-flask: Dockerfile para el contenedor de FLASK.
-### app.conf: Archivo de configuración para el contenedor de NGINX, usado en Dockerfile-nginx.
-### app.ini: Archivo de configuración para el contenedor de FLASK, usado en Dockerfile-flask.
-### requirements.txt: Archivo que se utiliza para cargar las dependencias del contenedor de flask, por ejemplo ´numpy´.
-### docker-compose.yml: Archivo Docker-Compose para levantar todos los contenedores necesarios (Flask, NGINX).
+### Dockerfile-nginx: 
+Dockerfile para el contenedor de NGINX.
+### Dockerfile-flask: 
+Dockerfile para el contenedor de FLASK.
+### app.conf: 
+Archivo de configuración para el contenedor de NGINX, usado en Dockerfile-nginx.
+### app.ini: 
+Archivo de configuración para el contenedor de FLASK, usado en Dockerfile-flask.
+### requirements.txt: 
+Archivo que se utiliza para cargar las dependencias del contenedor de flask, por ejemplo ´numpy´.
+### docker-compose.yml: 
+Archivo Docker-Compose para levantar todos los contenedores necesarios (Flask, NGINX).
 ···
