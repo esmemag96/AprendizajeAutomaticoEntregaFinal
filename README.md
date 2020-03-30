@@ -62,37 +62,19 @@ función `Train()`: Importamos nuestro dataset, este conjunto de datos contiene 
 Se ajusta el modelo de regresión lineal múltiple a nuestro conjunto de entrenamiento. Utilizamos el método de ajuste junto con los argumentos del método de ajuste, los cuales serán conjuntos de entrenamiento y luego creamos un modelo de archivo que contiene el modelo de entrenamiento.
 
 ## Archivos Front End:
-/static/style.css
-
-/static/app.js
-
-/templates/index.html
-
-### style.css:
+### /static/style.css:
 Hoja de estilos para el HTML.
-### app.js:
+### /static/app.js:
 Archivo JavaScript que se encarga de realizar las solicitudes al servidor Flask.
 
 Funcion `sendRequest()`:Se encarga de recopilar las entradas del usuario en la forma del HTML, formatearlas en formato JSON y de enviarlas asincronamente, asimismo de esperar su respuesta para mostrarla al usuario.
 
 Funcion `trainModelRequest()`:Se encarga de enviar una solicitud a la API para que vuelva a entrenar el modelo.
 
-### index.html: 
+### /templates/index.html: 
 HTML que contiene una pequeña forma para suministrar a la API con la información que necesita, asimismo contiene un botón que sirve para decirle a la API que debe entrenar el modelo nuevamente.
 
 ## Archivos Docker:
-Dockerfile-flask
-
-Dockerfile-nginx
-
-app.conf
-
-app.ini
-
-requirements.txt
-
-docker-compose.yml
-
 ### Dockerfile-nginx: 
 Dockerfile para el contenedor de NGINX.
 ### Dockerfile-flask: 
