@@ -31,6 +31,7 @@ docker-compose up
 docker-compose build
 ``` 
 y repetir el paso 4.
+
 6. Buscar la dirreccion localhost:5000 
 
 7. Da click en el boton de train para entrenar el modelo con el dataset
@@ -73,4 +74,23 @@ Funcion `sendRequest()`:Se encarga de recopilar las entradas del usuario en la f
 Funcion `trainModelRequest()`:Se encarga de enviar una solicitud a la API para que vuelva a entrenar el modelo.
 ### index.html: HTML que contiene una pequeña forma para suministrar a la API con la información que necesita, asimismo contiene un botón que sirve para decirle a la API que debe entrenar el modelo nuevamente.
 
+## Archivos Docker:
+Dockerfile-flask
+
+Dockerfile-nginx
+
+app.conf
+
+app.ini
+
+requirements.txt
+
+docker-compose.yml
+
+### Dockerfile-nginx: Dockerfile para el contenedor de NGINX.
+### Dockerfile-flask: Dockerfile para el contenedor de FLASK.
+### app.conf: Archivo de configuración para el contenedor de NGINX, usado en Dockerfile-nginx.
+### app.ini: Archivo de configuración para el contenedor de FLASK, usado en Dockerfile-flask.
+### requirements.txt: Archivo que se utiliza para cargar las dependencias del contenedor de flask, por ejemplo ´numpy´.
+### docker-compose.yml: Archivo Docker-Compose para levantar todos los contenedores necesarios (Flask, NGINX).
 ···
