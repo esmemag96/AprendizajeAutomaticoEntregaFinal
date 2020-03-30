@@ -40,15 +40,11 @@ Esta es una explicación más detallada de los archivos y funciones principales 
 App.py
 Train.py
 ### App.py: Este archivo es la API que se encarga de manejar las solicitudes que vienen del Front End.
-####Función: `home()`
-Función que se utiliza para que la API envíe el archivo index.html.
-####Función: `predict()`
-Función que se utiliza para predecir los valores, la función se llama cuando se hace una solicitud HTTP que recive un JSON con la infomración introducida en el Front End, realiza las predicciones necesarias y regresa un resultado al cliente en un JSON.
-####función: `trainModel()`
-Función que se utiliza para volver a entrenar el modelo, la función se llama cuando se hace una solicitud HTTP que recive un JSON con la infomración introducida en el Front End, realiza el entrenamiento y regresa una respuesta booleana para avisar al cliente si el entrenamiento fue exitoso o no.
+Función `home()`:  Se utiliza para que la API envíe el archivo index.html.
+Función `predict()`: Se utiliza para predecir los valores, la función se llama cuando se hace una solicitud HTTP que recive un JSON con la infomración introducida en el Front End, realiza las predicciones necesarias y regresa un resultado al cliente en un JSON.
+función `trainModel()`: Se utiliza para volver a entrenar el modelo, la función se llama cuando se hace una solicitud HTTP que recive un JSON con la infomración introducida en el Front End, realiza el entrenamiento y regresa una respuesta booleana para avisar al cliente si el entrenamiento fue exitoso o no.
 ### Train.py: Este archivo se encarga de realizar el entrenamiento del modelo.
-####función: `Train()`
-Importamos nuestro dataset, este conjunto de datos contiene 28 preguntas que dividimos en 3 secciones, cada sección se conoce como un año escolar este se divide en el conjunto de datos de entrenamiento y Prueba
+función `Train()`: Importamos nuestro dataset, este conjunto de datos contiene 28 preguntas que dividimos en 3 secciones, cada sección se conoce como un año escolar este se divide en el conjunto de datos de entrenamiento y Prueba
 
 Se ajusta el modelo de regresión lineal múltiple a nuestro conjunto de entrenamiento. Utilizamos el método de ajuste junto con los argumentos del método de ajuste, los cuales serán conjuntos de entrenamiento y luego creamos un modelo de archivo que contiene el modelo de entrenamiento.
 
@@ -59,6 +55,8 @@ Se ajusta el modelo de regresión lineal múltiple a nuestro conjunto de entrena
 ###style.css:
 Hoja de estilos para el HTML.
 ###app.js:Archivo JavaScript que se encarga de realizar las solicitudes al servidor Flask.
-Archivo
-###index.html
+Funcion `sendRequest()`:Se encarga de recopilar las entradas del usuario en la forma del HTML, formatearlas en formato JSON y de enviarlas asincronamente, asimismo de esperar su respuesta para mostrarla al usuario.
+Funcion `trainModelRequest()`:Se encarga de enviar una solicitud a la API para que vuelva a entrenar el modelo.
+###index.html: HTML que contiene una pequeña forma para suministrar a la API con la información que necesita, asimismo contiene un botón que sirve para decirle a la API que debe entrenar el modelo nuevamente.
+
 ···
