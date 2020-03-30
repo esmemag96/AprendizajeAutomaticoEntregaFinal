@@ -26,11 +26,16 @@ cd AprendizajeAutomaticoPrimeraEvaluacion
 ```bash 
 docker-compose up 
 ``` 
-5. Buscar la dirreccion localhost:5000 
+5. Si se agregó un nuevo modulo de python a ´requirements.txt´:
+```bash 
+docker-compose build
+``` 
+y repetir el paso 4.
+6. Buscar la dirreccion localhost:5000 
 
-6. Da click en el boton de train para entrenar el modelo con el dataset
+7. Da click en el boton de train para entrenar el modelo con el dataset
 
-7. Ingresa los valores a predecir 
+8. Ingresa los valores a predecir 
 
 
 # Uso
@@ -38,6 +43,7 @@ Esta es una explicación más detallada de los archivos y funciones principales 
 
 ## Archivos Python
 App.py
+
 Train.py
 ### App.py: Este archivo es la API que se encarga de manejar las solicitudes que vienen del Front End.
 
