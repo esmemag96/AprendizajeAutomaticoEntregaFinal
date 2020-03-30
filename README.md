@@ -1,6 +1,7 @@
 # Proyecto Aprendizaje automatico 
 Enrique Lira Martinez A01023351<br/>
 Emiliano Abascal Gurria A01023234<br/>
+Esmeralda Magdaleno Morales A01023086 <br/>
 
 # Enunciado del problema
 En este pequeño proyecto, se implemento un modelo de regresión lineal  que predice el puntaje de un maestro individual al final del año. "score3" o la calificación final será nuestra etiqueta (salida) y el resto de las columnas serán nuestras características (entradas). Primero, exploraré los datos para ver si podemos comprender cuál es la historia detrás de los datos, este conjunto de datos contiene 28 preguntas que dividimos en 3 secciones, cada sección se conoce como un año escolar.
