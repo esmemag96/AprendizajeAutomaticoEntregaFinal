@@ -43,9 +43,6 @@ y repetir el paso 4.
 Esta es una explicación más detallada de los archivos y funciones principales que se usan.
 
 ## Archivos Python
-App.py
-
-Train.py
 ### App.py: 
 Este archivo es la API que se encarga de manejar las solicitudes que vienen del Front End.
 
@@ -87,4 +84,3 @@ Archivo de configuración para el contenedor de FLASK, usado en Dockerfile-flask
 Archivo que se utiliza para cargar las dependencias del contenedor de flask, por ejemplo ´numpy´.
 ### docker-compose.yml: 
 Archivo Docker-Compose para levantar todos los contenedores necesarios (Flask, NGINX).
-···
