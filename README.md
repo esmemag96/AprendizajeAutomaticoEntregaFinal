@@ -1,6 +1,7 @@
 # Proyecto Aprendizaje automatico 
 Enrique Lira Martinez A01023351<br/>
 Emiliano Abascal Gurria A01023234<br/>
+Antony Adrian Morales Rosas A01019582<br/>
 Esmeralda Magdaleno Morales A01023086 <br/>
 
 # Enunciado del problema
