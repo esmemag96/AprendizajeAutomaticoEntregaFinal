@@ -86,3 +86,4 @@ function getGraphs() {//Function to request the server a new trained model.
     xhttp.setRequestHeader("Content-type", "application/json");//Set the content type as JSON.
     xhttp.send(data);//Send data.
 }
+
