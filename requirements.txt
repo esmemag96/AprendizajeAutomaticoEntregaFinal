@@ -9,3 +9,8 @@ seaborn
 sklearn
 scipy
 aoiklivereload
+pyopenssl
+datetime
+pprint
+pymongo
+flask_pymongo
