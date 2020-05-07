@@ -119,7 +119,7 @@ def Grafica3d():
 	fig.suptitle('$R^2 = %.2f$' % r2, fontsize=20) # R^2 del modelo 
 
 	fig.tight_layout()
-	fig.savefig('img/grafica.png', transparent=True)
+	fig.savefig('static/img/grafica.png', transparent=True)
 	return True
 def TrainTree():
 	# Importing the dataset:
