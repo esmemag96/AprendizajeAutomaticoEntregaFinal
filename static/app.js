@@ -1,4 +1,4 @@
-function sendRequest() {//Function to request prediction from server.
+function requestPrediction() {//Function to request prediction from server.
     //Input elements on the HTML(DOM)
     var grade1 = parseInt(document.getElementById("1stGrade").value)
     var grade2 = parseInt(document.getElementById("2ndGrade").value)
@@ -29,18 +29,60 @@ function sendRequest() {//Function to request prediction from server.
 function trainModelRequest() {//Function to request the server a new trained model.
     var data = JSON.stringify({ 'train': true })//JSON object to be sent to the api.
     var xhttp = new XMLHttpRequest();//New HMLHTTP request (Like ajax)
+    result = ""
     xhttp.onreadystatechange = function () {//Clousure that is called when the response from the api is receved.
-        result = document.getElementById("training")//DOM element in the HTML to display the training result.
         if (this.readyState == 4 && this.status == 200) {//If the state of the response is correct, then:
             var json = JSON.parse(xhttp.responseText);//Parsed JSON.
-            if (json.trainingComplete) {//if the training is successfull, then display a success message.
-                result.textContent = "The training was made succesfully";
+            if (json.multilineal) {//if the training is successfull, then display a success message.
+                result += "Multilineal training was made succesfully"
             } else {//Else, display error message
-                result.textContent = "The training failed";
+                result += "Multilineal training failed"
+            }
+            if (json.threeD){
+                result += "\n3d training was made succesfully"
+            } else {
+                result += "\n3d training failed"
+            }
+            if (json.tree){
+                result += "\nDesicion training was made succesfully"
+            } else {
+                result += "\nDesicion training failed"
+            }
+            alert(result)
+        }
+        
+    };
+    
+    xhttp.open("POST", "http://localhost:5000/train", true);//Open connection to the server, at route /train.
+    xhttp.setRequestHeader("Content-type", "application/json");//Set the content type as JSON.
+    xhttp.send(data);//Send data.
+}
+
+function getGraphs() {//Function to request the server a new trained model.
+    var data = JSON.stringify({ 'getGraphs': true })//JSON object to be sent to the api.
+    var xhttp = new XMLHttpRequest();//New HMLHTTP request (Like ajax)
+    result = ""
+    xhttp.onreadystatechange = function () {//Clousure that is called when the response from the api is receved.
+        if (this.readyState == 4 && this.status == 200) {//If the state of the response is correct, then:
+            var json = JSON.parse(xhttp.responseText);//Parsed JSON.
+            if (json.multilineal) {//if the training is successfull, then display a success message.
+                result += "Multilineal training was made succesfully"
+            } else {//Else, display error message
+                result += "Multilineal training failed"
+            }
+            if (json.threeD){
+                result += "\n3d training was made succesfully"
+            } else {
+                result += "\n3d training failed"
+            }
+            if (json.tree){
+                result += "\nDesicion training was made succesfully"
+            } else {
+                result += "\nDesicion training failed"
             }
         }
     };
-    xhttp.open("POST", "http://localhost:5000/train", true);//Open connection to the server, at route /train.
+    xhttp.open("POST", "http://localhost:5000/getGraphs", true);//Open connection to the server, at route /train.
     xhttp.setRequestHeader("Content-type", "application/json");//Set the content type as JSON.
     xhttp.send(data);//Send data.
 }

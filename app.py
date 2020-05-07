@@ -39,9 +39,7 @@ def trainModel():
         return json.dumps({'result': "bad post"})
     else:  # Else call the function 'Train()'
         # Return a json object with the result of the call (T or F)
-        # Train.Grafica3d()
-        # Train.TrainTree()
-        return json.dumps({'trainingComplete': Train.Train()})
+        return json.dumps({'multilineal': Train.Train(), 'threeD': Train.Grafica3d(), 'tree': Train.TrainTree()})
 
 
 if __name__ == "__main__":
@@ -50,5 +48,4 @@ if __name__ == "__main__":
         from aoiklivereload import LiveReloader
         LiveReloader().start_watcher_thread()
         # Run the App
-        #
         app.run(debug=debug, workers=settings.WORKERS, access_log=debug)
