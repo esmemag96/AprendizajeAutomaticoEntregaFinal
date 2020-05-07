@@ -8,3 +8,4 @@ matplotlib
 seaborn
 sklearn
 scipy
+aoiklivereload
