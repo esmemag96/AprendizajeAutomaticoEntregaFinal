@@ -186,9 +186,9 @@ def GraficaMean(id_instr):
 	y = tGrades['score2']
 
 	dict= {
-		"arr1":np.array(x),
-		"mean1":np.mean(x),
-		"arr2":np.array(y),
-		"mean2":np.mean(y)}
+		"arr1":np.array(x),#arr1 = score1
+		"mean1":np.mean(x),#mean1 = mean(score1)
+		"arr2":np.array(y),#arr2 = score2
+		"mean2":np.mean(y)}#mean2 = mean(score2)
 		
 	return dict
