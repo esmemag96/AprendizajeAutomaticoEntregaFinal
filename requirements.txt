@@ -16,3 +16,4 @@ pprint
 pymongo
 flask_pymongo
 statistics
+translate

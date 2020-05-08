@@ -80,39 +80,6 @@ function getGraphs(teacherID) {//Function to request the server a new trained mo
     xhttp.send(data);//Send data.
 }
 
-window.onload = function () {
-    getGraphs(-1);
-};
-
-// function setChart(data) {
-//     console.log(data['arr1']);
-//     var ctx = document.getElementById('myChart').getContext('2d');
-//     var stackedLine = new Chart(ctx, {
-//         type: 'line',
-//         data: {
-//             labels: data['arr1'],
-//             datasets: [{
-//                 data: data['arr1'],
-//                 label: "arr1",
-//                 borderColor: "#3e95cd",
-//                 fill: false
-//             }, {
-//                 data: data['arr2'],
-//                 label: "arr2",
-//                 borderColor: "#8e5ea2",
-//                 fill: false
-//             }
-//             ]
-//         },
-//         options: {
-//             title: {
-//                 display: true,
-//                 text: 'World population per region (in millions)'
-//             }
-//         }
-//     });
-// }
-
 function setChart(data) {
     console.log(data['arr1']);
     var ctx = document.getElementById('myChart').getContext('2d');
@@ -136,3 +103,9 @@ function setChart(data) {
         }
     });
 }
+
+
+
+window.onload = function () {
+  getGraphs(-1);
+};

@@ -1,10 +1,12 @@
 import numpy as np
+import translate
 from flask import Flask, request, jsonify, render_template
-import Train
+import Train, sentiment
 import pickle
 import json
 
 app = Flask(__name__)
+app.config['JSON_AS_ASCII'] = False
 model = pickle.load(open('Models/model.pkl', 'rb'))
 modelTree = pickle.load(open('Models/modelTree.pkl', 'rb'))
 # Request to return the index.html
@@ -54,6 +56,25 @@ def getGraphs():
             x = Train.GraficaMean(content['teacherID'])
             response =  { 'Status' : 'Success', 'ImageBytes': image, "meanGraph": x}
         return json.dumps(response)
+        
+@app.route('/text-analysis')
+def textAnalysis():
+    return render_template('textAnalysis.html')
+
+@app.route('/translate-text', methods=['POST'])
+def translate_text():
+    data = request.get_json()
+    text_input = data['text']
+    translation_output = data['to']
+    response = translate.get_translation(text_input, translation_output)
+    return jsonify(response)
+
+@app.route('/sentiment-analysis', methods=['POST'])
+def sentiment_analysis():
+    data = request.get_json()
+    input_text = data['inputText']
+    response = sentiment.get_sentiment(input_text)
+    return jsonify(response)
 if __name__ == "__main__":
     debug = settings.DEBUG  # My settings object
     if (debug):

@@ -9,7 +9,7 @@
   <link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
   <link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
   
-  <link rel="stylesheet" href="/static/style.css" type='text/css'>
+  <link rel="stylesheet" href="/static/css/style.css" type='text/css'>
 
 </head>
 
@@ -24,6 +24,7 @@
       min="1" max="100" />
     <button class="btn btn-primary btn-block btn-large" onclick="requestPrediction()">Final score should be</button>
     <button class="btn btn-primary btn-block btn-large" onclick="trainModelRequest()">Train Model</button>
+    <button class="btn btn-primary btn-block btn-large" onclick="location.href = '/text-analysis'">Text Analysis</button>
     <br>
     <br>
     <h3 id="prediction"></h3>
@@ -34,5 +35,5 @@
   </div>
 </body>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
-<script src="/static/app.js" charset="utf-8"></script>
+<script src="/static/scripts/main.js" charset="utf-8"></script>
 </html>
