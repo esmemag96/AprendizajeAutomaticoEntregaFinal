@@ -59,26 +59,15 @@ function trainModelRequest() {//Function to request the server a new trained mod
 }
 
 function getGraphs() {//Function to request the server a new trained model.
-    var data = JSON.stringify({ 'getGraphs': true })//JSON object to be sent to the api.
+    var data = JSON.stringify({ 'getGraphs': true, })//JSON object to be sent to the api.
     var xhttp = new XMLHttpRequest();//New HMLHTTP request (Like ajax)
+    var imageTag = document.getElementById("imagePng");
     result = ""
     xhttp.onreadystatechange = function () {//Clousure that is called when the response from the api is receved.
         if (this.readyState == 4 && this.status == 200) {//If the state of the response is correct, then:
             var json = JSON.parse(xhttp.responseText);//Parsed JSON.
-            if (json.multilineal) {//if the training is successfull, then display a success message.
-                result += "Multilineal training was made succesfully"
-            } else {//Else, display error message
-                result += "Multilineal training failed"
-            }
-            if (json.threeD){
-                result += "\n3d training was made succesfully"
-            } else {
-                result += "\n3d training failed"
-            }
-            if (json.tree){
-                result += "\nDesicion training was made succesfully"
-            } else {
-                result += "\nDesicion training failed"
+            if (json.ImageBytes){
+                imageTag.src = "data:image/png;base64," + json.ImageBytes;
             }
         }
     };
@@ -86,4 +75,8 @@ function getGraphs() {//Function to request the server a new trained model.
     xhttp.setRequestHeader("Content-type", "application/json");//Set the content type as JSON.
     xhttp.send(data);//Send data.
 }
+
+window.onload = function() {
+    getGraphs();
+};
 

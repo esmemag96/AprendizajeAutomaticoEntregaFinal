@@ -13,7 +13,6 @@ def home():
     return render_template('index.html')
 # Request to return a new prediction.
 @app.route('/predict', methods=['POST'])
-
 def predict():
     # If the request is not on JSON format, then return an error to the client.
     if(request.is_json == False):
@@ -40,7 +39,17 @@ def trainModel():
     else:  # Else call the function 'Train()'
         # Return a json object with the result of the call (T or F)
         return json.dumps({'multilineal': Train.Train(), 'threeD': Train.Grafica3d(), 'tree': Train.TrainTree()})
-
+@app.route('/getGraphs', methods=['POST'])
+def getGraphs():
+    # If the request is not on JSON format, then return an error to the client.
+    if(request.is_json == False):
+        return json.dumps({'result': "bad post"})
+    else:  # Else call the function 'Train()'
+        # Return a json object with the result of the call (T or F)
+        image_path = 'static/img/grafica.png'
+        image = Train.getImage(image_path)
+        response =  { 'Status' : 'Success', 'ImageBytes': image}
+        return json.dumps(response)
 
 if __name__ == "__main__":
     debug = settings.DEBUG  # My settings object

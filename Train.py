@@ -1,6 +1,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
-
+import io
+import base64
 from sklearn import linear_model
 from mpl_toolkits.mplot3d import Axes3D
 import pandas as pd
@@ -159,14 +160,11 @@ def TrainTree():
 	#Predicting the Test set results:
 	# scores_0 = cross_val_score(model, X_train, y_train, cv=5)
 	# print("Accuracy: %0.2f (+/-%0.2f)" % (scores_0.mean(),scores_0.std()*2))
-
 	return True
 	
 def GraficaMean(id_instr):
-
 # Importing the dataset:
 	pb_df = pd.read_csv("train.csv")
-	
 	#this data set contains 28 questions which we divide into 3 sections, each section is referred to as a school year 
 	evaluacion1 = pb_df.iloc[:, 23:32].sum(axis=1)#get the sum of the elements in the column 23 to 32
 	pb_df.insert(1, "score3", evaluacion1, True) #add the column in the dataset 
@@ -190,5 +188,10 @@ def GraficaMean(id_instr):
 		"mean1":np.mean(x),#mean1 = mean(score1)
 		"arr2":np.array(y),#arr2 = score2
 		"mean2":np.mean(y)}#mean2 = mean(score2)
-		
 	return dict
+
+
+def getImage(path):
+	with open(path, mode='rb') as file:
+		img = file.read()
+	return base64.encodebytes(img).decode("utf-8")
