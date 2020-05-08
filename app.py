@@ -1,12 +1,17 @@
 import numpy as np
 import translate
 from flask import Flask, request, jsonify, render_template
+from flask_cors import CORS, cross_origin
 import Train, sentiment
 import pickle
 import json
 
 app = Flask(__name__)
 app.config['JSON_AS_ASCII'] = False
+
+CORS(app, expose_headers='Authorization')
+
+
 model = pickle.load(open('Models/model.pkl', 'rb'))
 modelTree = pickle.load(open('Models/modelTree.pkl', 'rb'))
 # Request to return the index.html

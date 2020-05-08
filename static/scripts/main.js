@@ -21,7 +21,7 @@ function requestPrediction() {//Function to request prediction from server.
             }
             getGraphs(id)
         };
-        xhttp.open("POST", "http://localhost:5000/predict", true);//Open connection to the server, at route /predict.
+        xhttp.open("POST", "/predict", true);//Open connection to the server, at route /predict.
         xhttp.setRequestHeader("Content-type", "application/json");//Set the content type as JSON.
         xhttp.send(data);//Send data.
     }
@@ -54,7 +54,7 @@ function trainModelRequest() {//Function to request the server a new trained mod
 
     };
 
-    xhttp.open("POST", "http://localhost:5000/train", true);//Open connection to the server, at route /train.
+    xhttp.open("POST", "/train", true);//Open connection to the server, at route /train.
     xhttp.setRequestHeader("Content-type", "application/json");//Set the content type as JSON.
     xhttp.send(data);//Send data.
 }
@@ -75,7 +75,7 @@ function getGraphs(teacherID) {//Function to request the server a new trained mo
             }
         }
     };
-    xhttp.open("POST", "http://localhost:5000/getGraphs", true);//Open connection to the server, at route /train.
+    xhttp.open("POST", "/getGraphs", true);//Open connection to the server, at route /train.
     xhttp.setRequestHeader("Content-type", "application/json");//Set the content type as JSON.
     xhttp.send(data);//Send data.
 }
@@ -108,4 +108,5 @@ function setChart(data) {
 
 window.onload = function () {
   getGraphs(-1);
+
 };
