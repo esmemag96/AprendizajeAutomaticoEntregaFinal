@@ -16,9 +16,10 @@ function requestPrediction() {//Function to request prediction from server.
             if (this.readyState == 4 && this.status == 200) {//If the state of the response is correct, then:
                 var json = JSON.parse(xhttp.responseText);//Parsed JSON.
                 result.textContent = "The grade of the professor next year should be: " + (json.prediction / .45);//Result added to the HTML
-            }else{
+            } else {
                 result.textContent = "Something Went wrong, please try again";//Result added to the HTML
             }
+            getGraphs(id)
         };
         xhttp.open("POST", "http://localhost:5000/predict", true);//Open connection to the server, at route /predict.
         xhttp.setRequestHeader("Content-type", "application/json");//Set the content type as JSON.
@@ -38,36 +39,39 @@ function trainModelRequest() {//Function to request the server a new trained mod
             } else {//Else, display error message
                 result += "Multilineal training failed"
             }
-            if (json.threeD){
+            if (json.threeD) {
                 result += "\n3d training was made succesfully"
             } else {
                 result += "\n3d training failed"
             }
-            if (json.tree){
+            if (json.tree) {
                 result += "\nDesicion training was made succesfully"
             } else {
                 result += "\nDesicion training failed"
             }
             alert(result)
         }
-        
+
     };
-    
+
     xhttp.open("POST", "http://localhost:5000/train", true);//Open connection to the server, at route /train.
     xhttp.setRequestHeader("Content-type", "application/json");//Set the content type as JSON.
     xhttp.send(data);//Send data.
 }
 
-function getGraphs() {//Function to request the server a new trained model.
-    var data = JSON.stringify({ 'getGraphs': true, })//JSON object to be sent to the api.
+function getGraphs(teacherID) {//Function to request the server a new trained model.
+    var data = JSON.stringify({ 'getGraphs': true, "teacherID": teacherID })//JSON object to be sent to the api.
     var xhttp = new XMLHttpRequest();//New HMLHTTP request (Like ajax)
     var imageTag = document.getElementById("imagePng");
     result = ""
     xhttp.onreadystatechange = function () {//Clousure that is called when the response from the api is receved.
         if (this.readyState == 4 && this.status == 200) {//If the state of the response is correct, then:
             var json = JSON.parse(xhttp.responseText);//Parsed JSON.
-            if (json.ImageBytes){
+            if (json.ImageBytes) {
                 imageTag.src = "data:image/png;base64," + json.ImageBytes;
+            }
+            if (json.meanGraph) {
+                setChart(json.meanGraph)
             }
         }
     };
@@ -76,7 +80,47 @@ function getGraphs() {//Function to request the server a new trained model.
     xhttp.send(data);//Send data.
 }
 
-window.onload = function() {
-    getGraphs();
+window.onload = function () {
+    getGraphs(-1);
 };
 
+function setChart(data) {
+    console.log(data);
+    var ctx = document.getElementById('myChart').getContext('2d');
+    var myChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+            datasets: [{
+                label: '# of Votes',
+                data: [data['arr1'], data['arr2']],
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.2)',
+                    'rgba(54, 162, 235, 0.2)',
+                    'rgba(255, 206, 86, 0.2)',
+                    'rgba(75, 192, 192, 0.2)',
+                    'rgba(153, 102, 255, 0.2)',
+                    'rgba(255, 159, 64, 0.2)'
+                ],
+                borderColor: [
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(153, 102, 255, 1)',
+                    'rgba(255, 159, 64, 1)'
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true
+                    }
+                }]
+            }
+        }
+    });
+}
