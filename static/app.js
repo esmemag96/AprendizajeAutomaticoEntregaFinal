@@ -16,9 +16,10 @@ function requestPrediction() {//Function to request prediction from server.
             if (this.readyState == 4 && this.status == 200) {//If the state of the response is correct, then:
                 var json = JSON.parse(xhttp.responseText);//Parsed JSON.
                 result.textContent = "The grade of the professor next year should be: " + (json.prediction / .45);//Result added to the HTML
-            }else{
+            } else {
                 result.textContent = "Something Went wrong, please try again";//Result added to the HTML
             }
+            getGraphs(id)
         };
         xhttp.open("POST", "http://localhost:5000/predict", true);//Open connection to the server, at route /predict.
         xhttp.setRequestHeader("Content-type", "application/json");//Set the content type as JSON.
@@ -38,36 +39,39 @@ function trainModelRequest() {//Function to request the server a new trained mod
             } else {//Else, display error message
                 result += "Multilineal training failed"
             }
-            if (json.threeD){
+            if (json.threeD) {
                 result += "\n3d training was made succesfully"
             } else {
                 result += "\n3d training failed"
             }
-            if (json.tree){
+            if (json.tree) {
                 result += "\nDesicion training was made succesfully"
             } else {
                 result += "\nDesicion training failed"
             }
             alert(result)
         }
-        
+
     };
-    
+
     xhttp.open("POST", "http://localhost:5000/train", true);//Open connection to the server, at route /train.
     xhttp.setRequestHeader("Content-type", "application/json");//Set the content type as JSON.
     xhttp.send(data);//Send data.
 }
 
-function getGraphs() {//Function to request the server a new trained model.
-    var data = JSON.stringify({ 'getGraphs': true, })//JSON object to be sent to the api.
+function getGraphs(teacherID) {//Function to request the server a new trained model.
+    var data = JSON.stringify({ 'getGraphs': true, "teacherID": teacherID })//JSON object to be sent to the api.
     var xhttp = new XMLHttpRequest();//New HMLHTTP request (Like ajax)
     var imageTag = document.getElementById("imagePng");
     result = ""
     xhttp.onreadystatechange = function () {//Clousure that is called when the response from the api is receved.
         if (this.readyState == 4 && this.status == 200) {//If the state of the response is correct, then:
             var json = JSON.parse(xhttp.responseText);//Parsed JSON.
-            if (json.ImageBytes){
+            if (json.ImageBytes) {
                 imageTag.src = "data:image/png;base64," + json.ImageBytes;
+            }
+            if (json.meanGraph) {
+                setChart(json.meanGraph)
             }
         }
     };
@@ -76,7 +80,59 @@ function getGraphs() {//Function to request the server a new trained model.
     xhttp.send(data);//Send data.
 }
 
-window.onload = function() {
-    getGraphs();
+window.onload = function () {
+    getGraphs(-1);
 };
 
+// function setChart(data) {
+//     console.log(data['arr1']);
+//     var ctx = document.getElementById('myChart').getContext('2d');
+//     var stackedLine = new Chart(ctx, {
+//         type: 'line',
+//         data: {
+//             labels: data['arr1'],
+//             datasets: [{
+//                 data: data['arr1'],
+//                 label: "arr1",
+//                 borderColor: "#3e95cd",
+//                 fill: false
+//             }, {
+//                 data: data['arr2'],
+//                 label: "arr2",
+//                 borderColor: "#8e5ea2",
+//                 fill: false
+//             }
+//             ]
+//         },
+//         options: {
+//             title: {
+//                 display: true,
+//                 text: 'World population per region (in millions)'
+//             }
+//         }
+//     });
+// }
+
+function setChart(data) {
+    console.log(data['arr1']);
+    var ctx = document.getElementById('myChart').getContext('2d');
+    new Chart(document.getElementById("myChart"), {
+        type: 'bar',
+        data: {
+          labels: data['arr1'],
+          datasets: [
+            {
+              label: "eXAMPO",
+              backgroundColor: "#3e95cd",
+              data: data['arr1']
+            }
+          ]
+        },
+        options: {
+          title: {
+            display: true,
+            text: 'Population growth (millions)'
+          }
+        }
+    });
+}

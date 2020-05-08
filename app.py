@@ -23,7 +23,7 @@ def predict():
         int_features = [data['TeacherID'], data['1stGrade'], data['2ndGrade']]
         # final features is a numpy array, made of the list from above.
         final_features = [np.array(int_features)]
-        prediction = model.predict(final_features)  # The prediction is made.
+        prediction = modelTree.predict(final_features)  # The prediction is made.
         # The result from the prediction is rounded.
         output = round(prediction[0], 2)
         # The result from the prediction is formated into JSON format.
@@ -45,12 +45,15 @@ def getGraphs():
     if(request.is_json == False):
         return json.dumps({'result': "bad post"})
     else:  # Else call the function 'Train()'
-        # Return a json object with the result of the call (T or F)
+        content = request.json
         image_path = 'static/img/grafica.png'
         image = Train.getImage(image_path)
-        response =  { 'Status' : 'Success', 'ImageBytes': image}
+        if(content['teacherID'] == -1):
+            response =  { 'Status' : 'Success', 'ImageBytes': image}
+        else:
+            x = Train.GraficaMean(content['teacherID'])
+            response =  { 'Status' : 'Success', 'ImageBytes': image, "meanGraph": x}
         return json.dumps(response)
-
 if __name__ == "__main__":
     debug = settings.DEBUG  # My settings object
     if (debug):
