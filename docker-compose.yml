@@ -7,8 +7,6 @@
     dockerfile: Dockerfile-flask
    volumes:
     - "./:/app"
-   depends_on:
-    - mongodb
   nginx:
    image: webapp-nginx
    build:

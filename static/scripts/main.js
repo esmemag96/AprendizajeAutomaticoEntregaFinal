@@ -108,5 +108,4 @@ function setChart(data) {
 
 window.onload = function () {
   getGraphs(-1);
-
 };

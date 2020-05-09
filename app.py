@@ -2,7 +2,7 @@ import numpy as np
 import translate
 from flask import Flask, request, jsonify, render_template
 from flask_cors import CORS, cross_origin
-import Train, sentiment
+from helperScrpits import Train, sentiment
 import pickle
 import json
 
