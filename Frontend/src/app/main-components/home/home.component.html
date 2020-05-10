@@ -1,5 +1,13 @@
 <section>
     <div>
-      <h1>Hola mundo</h1>
+      <h1>Teachers grade</h1>
+      <form action="">
+        <input type="number" name="TeacherID" placeholder="Teacher ID" id="TeacherID" required="required" min="1" max="3">
+        <input type="number" name="1stGrade" placeholder="Fisrt Year Grade (1 to 100)" id="1stGrade" required="required" min="1" max="100">
+        <input type="number" name="2ndGrade" placeholder="Second Year Grade (1 to 100)" id="2ndGrade" required="required" min="1" max="100">
+        <button class="btn btn-primary btn-block btn-large" onclick="requestPrediction()">Final score should be</button>
+        <button class="btn btn-primary btn-block btn-large" onclick="trainModelRequest()">Train Model</button>
+        <button class="btn btn-primary btn-block btn-large" onclick="location.href = '/text-analysis'">Text Analysis</button>
+      </form>
     </div>
   </section>
