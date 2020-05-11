@@ -1,0 +1,14 @@
+<section>
+    <div class="card grade">
+      <h1 class="title">Teachers grade</h1>
+      <form #thisSocoreForm="ngForm" [formGroup]="scoreForm" (ngSubmit)="submitScore()">
+        <div class="form-group">
+          <input formControlName="id" type="number" name="TeacherID" placeholder="Teacher ID" id="TeacherID" required="required" min="1" max="3">
+          <input formControlName="grade1" type="number" name="1stGrade" placeholder="Fisrt Year Grade (1 to 100)" id="1stGrade" required="required" min="1" max="100">
+          <input formControlName="grade2" type="number" name="2ndGrade" placeholder="Second Year Grade (1 to 100)" id="2ndGrade" required="required" min="1" max="100">
+        </div>
+        <button class="btn btn-primary btn-block">Final score should be</button>
+        <!-- <button class="btn btn-secondary btn-block" onclick="trainModelRequest()">Train Model</button> -->
+      </form>
+    </div>
+  </section>

@@ -1,0 +1,44 @@
+@import "../../../_variables.scss";
+
+.header{
+    height: $navSize;
+    background-color: white;
+    border-bottom: 1px solid $lightDark;
+    nav{
+        height: 100%;
+        width: 100%;
+        padding: 0 35px;
+        justify-content: space-between;
+
+        display: flex;
+        align-items: center;
+
+        .logo{
+            width: 40px;
+            img{
+                width: 100%;
+            }
+        }
+
+        .right{
+            display: flex;
+
+            a{
+                margin-right: 10px;
+                color: $medium;
+                font-size: 0.95em;
+                font-weight: bold;
+                transition: 0.1s ease-in;
+
+                &:hover{
+                    transition: 0.1s ease-in;
+                    color: $darkLight;
+                }
+
+                &:last-child{
+                    margin-right: 0px;
+                }
+            }
+        }
+    }
+}
