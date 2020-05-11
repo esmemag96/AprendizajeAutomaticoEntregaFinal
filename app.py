@@ -27,12 +27,12 @@ def predict():
     else:  # Else, data is the json sent from the client.
         data = request.get_json()
         # The features are retreived from the JSON object and inserted in a list.
-        int_features = [data['TeacherID'], data['grade1'], data['grade2']]
+        int_features = [data['TeacherID'], data['grade1'] * .45, data['grade2'] * .45]
         # final features is a numpy array, made of the list from above.
         final_features = [np.array(int_features)]
         prediction = modelTree.predict(final_features)  # The prediction is made.
         # The result from the prediction is rounded.
-        output = round(prediction[0], 2)
+        output = round(prediction[0], 2) / .45
         # The result from the prediction is formated into JSON format.
         result = json.dumps({'prediction': output})
     return result  # The result is returned to the client.
