@@ -1,13 +1,13 @@
  version: '3'
  services:
-  flask:
+  flask-backend:
    image: webapp-flask
    build:
     context: .
     dockerfile: Dockerfile-flask
    volumes:
     - "./:/app"
-  nginx:
+  nginx-frontend:
    image: webapp-nginx
    build:
     context: .
@@ -15,8 +15,8 @@
    ports:
     - 5000:80
    depends_on:
-    - flask
-  node:
+    - flask-backend
+  node-angular:
     build:
      context: .
      dockerfile: Dockerfile-angular
