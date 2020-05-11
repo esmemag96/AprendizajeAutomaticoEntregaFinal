@@ -9,7 +9,7 @@ function requestPrediction() {//Function to request prediction from server.
     } else {//If all the inputs are correct, then the grades are formated to be compatible with the model's input.
         grade1 = grade1 * .45
         grade2 = grade2 * .45
-        var data = JSON.stringify({ 'TeacherID': id, "1stGrade": grade1, "2ndGrade": grade2 })//JSON object to be sent to the api.
+        var data = JSON.stringify({ 'TeacherID': id, "grade1": grade1, "grade2": grade2 })//JSON object to be sent to the api.
         var xhttp = new XMLHttpRequest();//New HMLHTTP request (Like ajax)
         xhttp.onreadystatechange = function () {//Clousure that is called when the response from the api is receved.
             result = document.getElementById("prediction")//DOM element in the HTML to display the result.
