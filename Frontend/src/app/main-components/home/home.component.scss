@@ -1,5 +1,10 @@
 .grade{
-    form{
+    width: 60%;
 
+    .btn{
+        margin-bottom: 10px;
+        &:last-child{
+            margin-bottom: 0;
+        }
     }
 }
