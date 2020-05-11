@@ -24,7 +24,16 @@
             display: flex;
 
             a{
-                margin-right: 8px;
+                margin-right: 10px;
+                color: $medium;
+                font-size: 0.95em;
+                font-weight: bold;
+                transition: 0.1s ease-in;
+
+                &:hover{
+                    transition: 0.1s ease-in;
+                    color: $darkLight;
+                }
 
                 &:last-child{
                     margin-right: 0px;
