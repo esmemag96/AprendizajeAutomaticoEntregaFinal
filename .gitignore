@@ -6,6 +6,7 @@ __pycache__/prediction.cpython-38.pyc
 .DS_Store
 static/.DS_Store
 data/db/journal/*
+data/db/diagnostic.data/*
 
 # See http://help.github.com/ignore-files/ for more about ignoring files.
 
@@ -53,5 +54,3 @@ data/db/journal/*
 # System Files
 .DS_Store
 Thumbs.db
-data/db/diagnostic.data/metrics.interim
-data/db/diagnostic.data/metrics.interim
