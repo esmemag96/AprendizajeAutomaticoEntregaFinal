@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { ScoreService } from '../../services/score.service';
 import { Score } from '../../model/Score';
 
@@ -12,27 +12,22 @@ export class HomeComponent implements OnInit {
 
   scoreForm: FormGroup;
 
-  constructor(private scoreService: ScoreService,
+  constructor(private scoreService: ScoreService, private formBuilder: FormBuilder,
+
   ) { }
   ngOnInit() {
-    // this.scoreForm = this.formBuilder.group({
-    //   id: [''],
-    //   grade1: [''],
-    //   grade2: ['']
-    // });
+    this.scoreForm = this.formBuilder.group({
+      id: [''],
+      grade1: [''],
+      grade2: ['']
+    });
   }
 
-  get isInvalid() {
-    return this.scoreForm.invalid;
-  }
   get f() {
     return this.scoreForm.controls;
   }
 
-  submitLogin(): void {
-    if (this.isInvalid) {
-      return;
-    }
+  submitScore(): void {
 
     const score: Score = {
       TeacherID: this.f.id.value,

@@ -1,5 +1,5 @@
 export interface Score {
-    'TeacherID': string, 
-    '1stGrade': string , 
-    '2ndGrade': string
+    TeacherID: string, 
+    grade1: string , 
+    grade2: string
 }
