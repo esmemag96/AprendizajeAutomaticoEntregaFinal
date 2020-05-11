@@ -54,3 +54,4 @@ data/db/journal/*
 .DS_Store
 Thumbs.db
 data/db/diagnostic.data/metrics.interim
+data/db/diagnostic.data/metrics.interim
