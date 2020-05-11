@@ -5,7 +5,10 @@
 export const environment = {
   production: false,
 
-  scoreApiEndpoint: "http://localhost:5000/predict"
+  scoreApiEndpoint: "http://localhost:5000/predict",
+  trainApiEndpoint: "http://localhost:5000/train",
+  textApiEndpoint:  "http://localhost:5000/sentiment-analysis"
+
 };
 
 /*

@@ -11,7 +11,7 @@ import { Score } from '../../model/Score';
 export class HomeComponent implements OnInit {
 
   scoreForm: FormGroup;
-
+  result: string;
   constructor(private scoreService: ScoreService, private formBuilder: FormBuilder,
 
   ) { }
@@ -36,9 +36,16 @@ export class HomeComponent implements OnInit {
     };
 
 
-    this.scoreService.score(score).subscribe(loginResponse => {
-      console.log(loginResponse);
-
+    this.scoreService.score(score).subscribe(predictResponse => {
+      this.result = predictResponse.prediction;
+      console.log(this.result);
+      return this.result;
+    });
+  }
+  trainModel(): void {
+    this.scoreService.train().subscribe(trainResponse => {
+      console.log(trainResponse);
+      alert("training succesful")
     });
   }
 } 

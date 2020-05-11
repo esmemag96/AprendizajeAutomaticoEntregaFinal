@@ -2,14 +2,13 @@
     <div class="card card-full card-flex">
         <div class="cardSection left">
             <h2 class="title">Enter the text you'd like to analyze</h2>
-            <form action="">
-                <textarea name="" id="" cols="30" rows="10"></textarea>
+            <form #thisTextForm="ngForm" [formGroup]="textForm" (ngSubmit)="submitText()">
+                <textarea formControlName="input" name="" id="" cols="30" rows="10"></textarea>
                 <button class="btn btn-primary">Confirm</button>
             </form>
         </div>
         <div class="cardSection right">
             <div class="results">
-
                 <h2 class="title">Keywords</h2>
                 <div id="keywords" class="keywords">
                     <div class="keyword keyword-blue"><span>key1</span></div>
