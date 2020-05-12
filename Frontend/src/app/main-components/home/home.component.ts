@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { FormBuilder, FormGroup } from "@angular/forms";
+import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { ScoreService } from "../../services/score.service";
 import { Score } from "../../model/Score";
 import { Graph } from "../../model/Graph";
@@ -35,9 +35,9 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
     this.scoreForm = this.formBuilder.group({
-      id: [""],
-      grade1: [""],
-      grade2: [""],
+      id: ['', Validators.required ],
+      grade1: ['', Validators.required ],
+      grade2: ['', Validators.required ],
     });
   }
 

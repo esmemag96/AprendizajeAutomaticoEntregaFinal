@@ -306,6 +306,11 @@ body {
       cursor: pointer;
       background-color: $light;
     }
+
+    &:disabled{
+      background: #dddddd !important;
+      cursor: not-allowed;
+    }
 }
 
   .btn-primary{
