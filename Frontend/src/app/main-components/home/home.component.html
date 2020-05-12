@@ -1,17 +1,27 @@
 <section>
-    <div class="card grade">
+    <div class="card card-full grade">
+      <div></div>
+      <div></div>
       <h1 class="title">Teachers grade</h1>
-      <form #thisSocoreForm="ngForm" [formGroup]="scoreForm" (ngSubmit)="submitScore()">
+      <form #thisSocoreForm="ngForm" [formGroup]="scoreForm" (ngSubmit)="submitScore()" class="gradeForm">
         <div class="form-group">
           <input formControlName="id" type="number" name="TeacherID" placeholder="Teacher ID" id="TeacherID" required="required" min="1" max="3">
           <input formControlName="grade1" type="number" name="1stGrade" placeholder="Fisrt Year Grade (1 to 100)" id="1stGrade" required="required" min="1" max="100">
           <input formControlName="grade2" type="number" name="2ndGrade" placeholder="Second Year Grade (1 to 100)" id="2ndGrade" required="required" min="1" max="100">
         </div>
-        <button class="btn btn-primary btn-block">Final score should be</button>
+        <button class="btn btn-primary btn-block"><span *ngIf="!isLoadingFinalScore">Final score should be</span> <span *ngIf="isLoadingFinalScore">Loading...</span></button>
       </form>
-      <button class="btn btn-secondary btn-block" (click)="trainModel()">Train Model</button>
+      <button class="btn btn-secondary btn-block" (click)="trainModel()"><span *ngIf="!isLoadingTrainModel">Train Model</span><span *ngIf="isLoadingTrainModel">Loading...</span></button>
     </div>
     <div *ngIf="result" class="card grade">
       <h1> Prediction Score: {{result}} </h1>
     </div>
   </section>
+
+  <div class="popup popup-red" *ngIf="scoreError || trainModelError">
+    <span>{{errorMessage}}</span>
+  </div>
+
+  <div class="popup popup-green" *ngIf="trainModelSucces">
+    <span>Training succesful</span>
+  </div>
