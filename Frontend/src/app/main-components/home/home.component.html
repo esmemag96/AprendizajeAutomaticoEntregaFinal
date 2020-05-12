@@ -1,27 +1,54 @@
 <section>
-    <div class="card card-full grade">
-      <div></div>
-      <div></div>
-      <h1 class="title">Teachers grade</h1>
-      <form #thisSocoreForm="ngForm" [formGroup]="scoreForm" (ngSubmit)="submitScore()" class="gradeForm">
-        <div class="form-group">
-          <input formControlName="id" type="number" name="TeacherID" placeholder="Teacher ID" id="TeacherID" required="required" min="1" max="3">
-          <input formControlName="grade1" type="number" name="1stGrade" placeholder="Fisrt Year Grade (1 to 100)" id="1stGrade" required="required" min="1" max="100">
-          <input formControlName="grade2" type="number" name="2ndGrade" placeholder="Second Year Grade (1 to 100)" id="2ndGrade" required="required" min="1" max="100">
+  <div class="card card-full grade">
+    <div></div>
+    <div></div>
+    <h1 class="title">Teachers grade</h1>
+    <form #thisSocoreForm="ngForm" [formGroup]="scoreForm" (ngSubmit)="submitScore()" class="gradeForm">
+      <div class="form-group">
+        <div
+          *ngIf="scoreForm.controls['id'].invalid && (scoreForm.controls['id'].dirty || scoreForm.controls['id'].touched)"
+          class="alert">
+          <div *ngIf="scoreForm.controls['id'].errors.required">
+            Teacher ID is required
+          </div>
         </div>
-        <button class="btn btn-primary btn-block"><span *ngIf="!isLoadingFinalScore">Final score should be</span> <span *ngIf="isLoadingFinalScore">Loading...</span></button>
-      </form>
-      <button class="btn btn-secondary btn-block" (click)="trainModel()"><span *ngIf="!isLoadingTrainModel">Train Model</span><span *ngIf="isLoadingTrainModel">Loading...</span></button>
-    </div>
-    <div *ngIf="result" class="card grade">
-      <h1> Prediction Score: {{result}} </h1>
-    </div>
-  </section>
-
-  <div class="popup popup-red" *ngIf="scoreError || trainModelError">
-    <span>{{errorMessage}}</span>
+        <input formControlName="id" type="number" name="TeacherID" placeholder="Teacher ID" id="TeacherID"
+          required="required" min="1" max="3">
+        <div
+          *ngIf="scoreForm.controls['grade1'].invalid && (scoreForm.controls['grade1'].dirty || scoreForm.controls['grade1'].touched)"
+          class="alert">
+          <div *ngIf="scoreForm.controls['grade1'].errors.required">
+            Garde 1 is required
+          </div>
+        </div>
+        <input formControlName="grade1" type="number" name="1stGrade" placeholder="Fisrt Year Grade (1 to 100)"
+          id="1stGrade" required="required" min="1" max="100">
+        <div
+          *ngIf="scoreForm.controls['grade2'].invalid && (scoreForm.controls['grade2'].dirty || scoreForm.controls['grade2'].touched)"
+          class="alert">
+          <div *ngIf="scoreForm.controls['grade2'].errors.required">
+            Garde 2 is required
+          </div>
+        </div>
+        <input formControlName="grade2" type="number" name="2ndGrade" placeholder="Second Year Grade (1 to 100)"
+          id="2ndGrade" required="required" min="1" max="100">
+      </div>
+      <button class="btn btn-primary btn-block" type="submit" [disabled]="!scoreForm.valid"><span
+          *ngIf="!isLoadingFinalScore">Final score should be</span> <span
+          *ngIf="isLoadingFinalScore">Loading...</span></button>
+    </form>
+    <button class="btn btn-secondary btn-block" (click)="trainModel()"><span *ngIf="!isLoadingTrainModel">Train
+        Model</span><span *ngIf="isLoadingTrainModel">Loading...</span></button>
   </div>
-
-  <div class="popup popup-green" *ngIf="trainModelSucces">
-    <span>Training succesful</span>
+  <div *ngIf="result" class="card grade">
+    <h1> Prediction Score: {{result}} </h1>
   </div>
+</section>
+
+<div class="popup popup-red" *ngIf="scoreError || trainModelError">
+  <span>{{errorMessage}}</span>
+</div>
+
+<div class="popup popup-green" *ngIf="trainModelSucces">
+  <span>Training succesful</span>
+</div>
