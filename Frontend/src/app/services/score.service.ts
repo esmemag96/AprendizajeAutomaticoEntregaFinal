@@ -9,6 +9,7 @@ export class ScoreService {
 
   private predictUrl = environment.scoreApiEndpoint;
   private trainUrl = environment.trainApiEndpoint;
+  private graphUrl = environment.graphApiEndpoint;
 
   constructor(private http: HttpClient) {
   }
@@ -26,12 +27,16 @@ export class ScoreService {
   }
 
   train(): Observable<any> {
-    // this.messageService.add('Login.....');
-
     const trainRequest = {
       train: true
     };
     return this.http.post(this.trainUrl, trainRequest)
+  }
 
+  graph(): Observable<any> {
+    const graphRequest = {
+      train: true
+    };
+    return this.http.post(this.trainUrl, graphRequest)
   }
 }

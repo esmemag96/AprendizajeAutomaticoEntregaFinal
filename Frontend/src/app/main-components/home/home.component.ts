@@ -42,10 +42,17 @@ export class HomeComponent implements OnInit {
       return this.result;
     });
   }
+  
   trainModel(): void {
     this.scoreService.train().subscribe(trainResponse => {
       console.log(trainResponse);
       alert("training succesful")
+    });
+  }
+
+  getGraphs(): void {
+    this.scoreService.graph().subscribe(graphResponse => {
+      console.log(graphResponse);
     });
   }
 } 
