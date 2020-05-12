@@ -73,11 +73,6 @@ export class HomeComponent implements OnInit {
       }
     );
   }
-<<<<<<< HEAD
-  
-=======
-
->>>>>>> 0bdf1f8695ee3f7e62ff608b678d17a736edf439
   trainModel(): void {
     this.isLoadingTrainModel = true;
 
