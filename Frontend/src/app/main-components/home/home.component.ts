@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { ScoreService } from "../../services/score.service";
 import { Score } from "../../model/Score";
+import { Graph } from "../../model/Graph";
 
 @Component({
   selector: "app-home",
@@ -52,7 +53,10 @@ export class HomeComponent implements OnInit {
       grade1: this.f.grade1.value,
       grade2: this.f.grade2.value,
     };
-
+    const graph: Graph = {
+      getGraphs: "true",
+	    teacherID: this.f.id.value,
+    };
     this.scoreService.score(score).subscribe(
       (predictResponse) => {
         this.isLoadingFinalScore = false;
@@ -72,8 +76,10 @@ export class HomeComponent implements OnInit {
         console.log("HTTP Error", err);
       }
     );
+    this.scoreService.graph(graph).subscribe(graphResponse => {
+      console.log(graphResponse);
+    });
   }
-
   trainModel(): void {
     this.isLoadingTrainModel = true;
 
@@ -100,4 +106,13 @@ export class HomeComponent implements OnInit {
       }
     );
   }
-}
+  // getGraphs() {
+  //   const graph: Graph = {
+  //     getGraphs: "true",
+	//     teacherID: this.f.id.value,
+  //   };
+  //   this.scoreService.graph(graph).subscribe(graphResponse => {
+  //     console.log(graphResponse);
+  //   });
+  // }
+} 
