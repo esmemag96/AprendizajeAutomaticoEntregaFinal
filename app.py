@@ -38,7 +38,7 @@ def predict():
     return result  # The result is returned to the client.
 # Request to train the model using the dataset
 
-@app.route('/train', methods=['POST'])
+@app.route('/train', methods=['POST', 'GET'])
 def trainModel():
     # If the request is not on JSON format, then return an error to the client.
     if(request.is_json == False):

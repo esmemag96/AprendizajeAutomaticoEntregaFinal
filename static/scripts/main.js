@@ -54,6 +54,7 @@ function trainModelRequest() {//Function to request the server a new trained mod
 
     xhttp.open("POST", "/train", true);//Open connection to the server, at route /train.
     xhttp.setRequestHeader("Content-type", "application/json");//Set the content type as JSON.
+//    xhttp.open("GET", "/train", true);//Open connection to the server, at route /train.
     xhttp.send(data);//Send data.
 }
 
@@ -79,7 +80,6 @@ function getGraphs(teacherID) {//Function to request the server a new trained mo
 }
 
 function setChart(data) {
-    console.log(data['arr1']);
     var ctx = document.getElementById('myChart').getContext('2d');
     new Chart(document.getElementById("myChart"), {
         type: 'bar',
