@@ -17,6 +17,7 @@ export class HomeComponent implements OnInit {
   // Handle Error
   scoreError: boolean;
   trainModelError: boolean;
+  trainModelSucces: boolean;
   errorMessage: string;
 
   constructor(
@@ -28,6 +29,7 @@ export class HomeComponent implements OnInit {
 
     this.scoreError = false;
     this.trainModelError = false;
+    this.trainModelSucces = false;
   }
 
   ngOnInit() {
@@ -65,7 +67,7 @@ export class HomeComponent implements OnInit {
 
         setTimeout(() => {
           this.scoreError = false;
-          if(!this.trainModelError)this.errorMessage = null;
+          if (!this.trainModelError) this.errorMessage = null;
         }, 3000);
         console.log("HTTP Error", err);
       }
@@ -78,8 +80,12 @@ export class HomeComponent implements OnInit {
     this.scoreService.train().subscribe(
       (trainResponse) => {
         this.isLoadingTrainModel = false;
+        this.trainModelSucces = true;
         console.log(trainResponse);
-        alert("training succesful");
+
+        setTimeout(() => {
+          this.trainModelSucces = false;
+        }, 3000);
       },
       (err) => {
         this.isLoadingTrainModel = false;
@@ -88,7 +94,7 @@ export class HomeComponent implements OnInit {
 
         setTimeout(() => {
           this.trainModelError = false;
-          if(!this.scoreError)this.errorMessage = null;
+          if (!this.scoreError) this.errorMessage = null;
         }, 3000);
         console.log("HTTP Error", err);
       }

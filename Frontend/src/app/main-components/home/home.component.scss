@@ -1,12 +1,7 @@
 .grade{
     width: 60%;
-    margin-top: 1em;
-    margin-bottom: 1em;
 
-    .btn{
+    .gradeForm{
         margin-bottom: 10px;
-        &:last-child{
-            margin-bottom: 0;
-        }
     }
 }
