@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Score } from '../model/Score';
+import { Graph } from '../model/Graph';
 import { environment } from './../../environments/environment';
 
 @Injectable({ providedIn: 'root' })
@@ -33,10 +34,11 @@ export class ScoreService {
     return this.http.post(this.trainUrl, trainRequest)
   }
 
-  graph(): Observable<any> {
+  graph(graph: Graph): Observable<any> {
     const graphRequest = {
-      train: true
+      getGraphs: graph.getGraphs,
+      teacherID: graph.teacherID,
     };
-    return this.http.post(this.trainUrl, graphRequest)
+    return this.http.post(this.graphUrl, graphRequest)
   }
 }
