@@ -55,3 +55,4 @@ data/db/diagnostic.data/*
 .DS_Store
 Thumbs.db
 __pycache__/app.cpython-38.pyc
+Models/modelTree.pkl

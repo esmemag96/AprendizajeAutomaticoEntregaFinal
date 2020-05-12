@@ -1,7 +1,14 @@
+@import '../../../variables';
+
 .grade{
     width: 60%;
 
     .gradeForm{
         margin-bottom: 10px;
+
+        .alert{
+            font-size: 0.8em;
+            color: $tertiary;
+        }
     }
 }
