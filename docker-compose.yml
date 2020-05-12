@@ -21,7 +21,7 @@
      context: .
      dockerfile: Dockerfile-angular
     ports:
-      - "4200:4200"
+      - "80:4200"
     volumes:
       - ./Frontend/:/usr/src/app
     command: yarn run start
