@@ -79,9 +79,10 @@ Archivo Docker-Compose para levantar todos los contenedores necesarios (Flask, N
 
 #Arquitectura
 
-#Versión Final
-##La versión final consistirá en lo siguiente:
--Login alumnos, para poder hacer las evaluaciones de sus clases.
--Login de profesores para poder acceder al dashboard de profesores
--Dashboard de profesores para ver las evaluaciones realizadas por los alumnos, asi como una predicción sobre cual es su futura calificación dependiendo de su actual evaluación.
--
+# Versión Final
+## ∂La versión final consistirá en lo siguiente:
+- Login alumnos, para poder hacer las evaluaciones de sus clases.
+- Login de profesores para poder acceder al dashboard de profesores
+- Dashboard de profesores para ver las evaluaciones realizadas por los alumnos, asi como una predicción sobre cual es su futura calificación dependiendo de su actual evaluación.
+
+
