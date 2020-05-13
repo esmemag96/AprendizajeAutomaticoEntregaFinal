@@ -4,17 +4,18 @@
             <h2 class="title">Enter the text you'd like to analyze</h2>
             <form #thisTextForm="ngForm" [formGroup]="textForm" (ngSubmit)="submitText()">
                 <textarea formControlName="input" name="" id="" cols="30" rows="10"></textarea>
-                <button class="btn btn-primary">Confirm</button>
+                <button class="btn btn-primary" [disabled]="!textForm.valid">
+                    <span *ngIf="!isLoadingAnalisis">Confirm</span> <span *ngIf="isLoadingAnalisis">Loading...</span>
+                </button>
             </form>
         </div>
         <div class="cardSection right">
-            <div class="results">
+            <div *ngIf="resultScore" class="result">
                 <h2 class="title">Keywords</h2>
                 <div id="keywords" class="keywords">
-                    <div class="keyword keyword-blue"><span>key1</span></div>
-                    <div class="keyword keyword-green"><span>key2</span></div>
-                    <div class="keyword keyword-blue"><span>keyword muy muy pero muuuuuy larga, que pex</span></div>
-                    <div class="keyword keyword-red"><span>key4</span></div>
+                    <div class="keyword keyword-blue" *ngFor="let resultKey of resultKeys">
+                        <span>{{resultKey}}</span>
+                    </div>
                 </div>
 
                 <h2 class="title">Results</h2>
@@ -22,13 +23,15 @@
                     <tr>
                         <th class="title">FEELING</th>
                         <th class="title">PERCENTAGE</th>
-                      </tr>
-                      <tr>
-                        <td>Positivo</td>
-                        <td class="value">30%</td>
-                      </tr>
+                    </tr>
+                    <tr>
+                        <td>Positive</td>
+                        <td class="value">{{resultScore}}%</td>
+                    </tr>
                 </table>
-
+            </div>
+            <div class="no-resultContainer">
+                <div *ngIf="!resultScore" class="no-result">No data to show</div>
             </div>
         </div>
     </div>

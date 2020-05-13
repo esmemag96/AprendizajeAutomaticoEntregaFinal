@@ -33,7 +33,7 @@
             id="2ndGrade">
         </div>
         <button class="btn btn-primary btn-block" type="submit" [disabled]="!scoreForm.valid"><span
-            *ngIf="!isLoadingFinalScore">Final score should be</span> <span
+            *ngIf="!isLoadingFinalScore">Get prediction</span> <span
             *ngIf="isLoadingFinalScore">Loading...</span></button>
       </form>
       <button class="btn btn-secondary btn-block" (click)="trainModel()"><span *ngIf="!isLoadingTrainModel">Train
@@ -42,7 +42,6 @@
 
     <div class="cardSection right">
       <div class="results">
-
         <div *ngIf="result" class="result">
           <span class="score">{{result}}</span>
           <span>Prediction Score</span>

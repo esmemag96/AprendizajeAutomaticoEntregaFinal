@@ -1,84 +1,98 @@
 @import "../../../_variables.scss";
 
-.left{
-    width: 60%;
+.left {
+  width: 60%;
 }
 
-.right{
-    width: 40%;
+.right {
+  width: 40%;
 }
 
-.results{
-    .keywords{
-        display: flex;
-        flex-wrap: wrap;
-        margin-bottom: 15px;
+.result {
+  .keywords {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 15px;
 
-        .keyword{
-            font-size: 0.85em;
-            font-weight: bold;
-            padding: 4px 8px;
-            border-radius: 3px;
-            margin-right: 10px;
-            margin-bottom: 10px;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.1);
-            color: $darkLight;
-            border: 1px solid $darkLight;
+    .keyword {
+      font-size: 0.85em;
+      font-weight: bold;
+      padding: 4px 8px;
+      border-radius: 3px;
+      margin-right: 10px;
+      margin-bottom: 10px;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.1);
+      color: $darkLight;
+      border: 1px solid $darkLight;
 
-            &:last-child{
-                margin-right: 0px;
-            }
-        }
-
-        .keyword-blue{
-            background-color: rgba(0, 136, 255,0.2);
-            color: $primary;
-            border: 1px solid $primary;
-        }
-
-        .keyword-green{
-            background-color: rgba(51, 153, 22,0.2);
-            color: $secondary;
-            border: 1px solid $secondary;
-        }
-
-        .keyword-yellow{
-            background-color: rgba(254, 166, 2,0.2);
-            color: $quaternary;
-            border: 1px solid $quaternary;
-        }
-
-        .keyword-red{
-            background-color: rgba(226, 27, 60,0.2);
-            color: $tertiary;
-            border: 1px solid $tertiary;
-        }
+      &:last-child {
+        margin-right: 0px;
+      }
     }
 
-    .percentage{
-        border-collapse: collapse;
-        width: 100%;
-        text-align: left;
-        font-weight: bold;
-
-        .title{
-            color: $medium;
-            font-weight: bold;
-        }
-        
-        td,th{
-            padding-bottom: 10px;
-            border-bottom: 1px solid $lightDark;
-        }
-
-        td{
-            padding-top: 10px;
-            font-size: 0.9em;
-        }
-
-        .value{
-            color: $secondary;
-        }
+    .keyword-blue {
+      background-color: rgba(0, 136, 255, 0.2);
+      color: $primary;
+      border: 1px solid $primary;
     }
+
+    .keyword-green {
+      background-color: rgba(51, 153, 22, 0.2);
+      color: $secondary;
+      border: 1px solid $secondary;
+    }
+
+    .keyword-yellow {
+      background-color: rgba(254, 166, 2, 0.2);
+      color: $quaternary;
+      border: 1px solid $quaternary;
+    }
+
+    .keyword-red {
+      background-color: rgba(226, 27, 60, 0.2);
+      color: $tertiary;
+      border: 1px solid $tertiary;
+    }
+  }
+
+  .percentage {
+    border-collapse: collapse;
+    width: 100%;
+    text-align: left;
+    font-weight: bold;
+
+    .title {
+      color: $medium;
+      font-weight: bold;
+    }
+
+    td,
+    th {
+      padding-bottom: 10px;
+      border-bottom: 1px solid $lightDark;
+    }
+
+    td {
+      padding-top: 10px;
+      font-size: 0.9em;
+    }
+
+    .value {
+      color: $secondary;
+    }
+  }
+}
+
+.no-resultContainer {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .no-result {
+    font-weight: bold;
+    font-size: 2em;
+    color: $medium;
+  }
 }
