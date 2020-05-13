@@ -39,6 +39,7 @@ export class HomeComponent implements OnInit {
       grade1: ['', Validators.required ],
       grade2: ['', Validators.required ],
     });
+    this.getGraphs(-1);
   }
 
   get f() {
@@ -76,9 +77,10 @@ export class HomeComponent implements OnInit {
         console.log("HTTP Error", err);
       }
     );
-    this.scoreService.graph(graph).subscribe(graphResponse => {
-      console.log(graphResponse);
-    });
+    // this.scoreService.graph(graph).subscribe(graphResponse => {
+    //   console.log(graphResponse);
+    // });
+    this.getGraphs(graph.teacherID);
   }
   trainModel(): void {
     this.isLoadingTrainModel = true;
@@ -105,14 +107,15 @@ export class HomeComponent implements OnInit {
         console.log("HTTP Error", err);
       }
     );
+    this.getGraphs(-1);
   }
-  // getGraphs() {
-  //   const graph: Graph = {
-  //     getGraphs: "true",
-	//     teacherID: this.f.id.value,
-  //   };
-  //   this.scoreService.graph(graph).subscribe(graphResponse => {
-  //     console.log(graphResponse);
-  //   });
-  // }
+  getGraphs(tID: number) {
+    const graph: Graph = {
+      getGraphs: "true",
+	    teacherID: tID,
+    };
+    this.scoreService.graph(graph).subscribe(graphResponse => {
+      console.log(graphResponse);
+    });
+  }
 } 
