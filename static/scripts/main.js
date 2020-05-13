@@ -78,7 +78,6 @@ function getGraphs(teacherID) {//Function to request the server a new trained mo
     xhttp.setRequestHeader("Content-type", "application/json");//Set the content type as JSON.
     xhttp.send(data);//Send data.
 }
-
 function setChart(data) {
     new Chart(document.getElementById("myChart"), {
         type: 'bar',

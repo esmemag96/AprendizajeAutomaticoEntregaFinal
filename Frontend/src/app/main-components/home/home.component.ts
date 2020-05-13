@@ -1,4 +1,6 @@
 import { Component, OnInit } from "@angular/core";
+import { DomSanitizer } from '@angular/platform-browser';
+import Chart from 'chart.js';
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { ScoreService } from "../../services/score.service";
 import { Score } from "../../model/Score";
@@ -12,6 +14,7 @@ import { Graph } from "../../model/Graph";
 export class HomeComponent implements OnInit {
   scoreForm: FormGroup;
   result: number;
+  imagePath: any;
   // Handle Loading
   isLoadingFinalScore: boolean;
   isLoadingTrainModel: boolean;
@@ -23,7 +26,9 @@ export class HomeComponent implements OnInit {
 
   constructor(
     private scoreService: ScoreService,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private _sanitizer: DomSanitizer
+    
   ) {
     this.isLoadingFinalScore = false;
     this.isLoadingTrainModel = false;
@@ -115,7 +120,31 @@ export class HomeComponent implements OnInit {
 	    teacherID: tID,
     };
     this.scoreService.graph(graph).subscribe(graphResponse => {
-      console.log(graphResponse);
+    this.imagePath = this._sanitizer.bypassSecurityTrustResourceUrl('data:image/jpg;base64,' 
+                 + graphResponse.ImageBytes);
+    setChart(graphResponse.meanGraph)
     });
   }
 } 
+
+function setChart(data: any) {
+  new Chart(document.getElementById("myChart"), {
+      type: 'bar',
+      data: {
+        labels: data['arr1'],
+        datasets: [
+          {
+            label: "Example",
+            backgroundColor: "#3e95cd",
+            data: data['arr1']
+          }
+        ]
+      },
+      options: {
+        title: {
+          display: true,
+          text: 'Population growth (millions)'
+        }
+      }
+  });
+}
