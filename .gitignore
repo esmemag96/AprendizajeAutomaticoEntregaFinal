@@ -54,5 +54,6 @@ data/db/diagnostic.data/*
 # System Files
 .DS_Store
 Thumbs.db
-__pycache__/app.cpython-38.pyc
-Models/modelTree.pkl
+__pycache__/*
+
+
