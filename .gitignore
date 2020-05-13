@@ -1,12 +1,10 @@
 
 __pycache__/app.cpython-38.pyc
 __pycache__/prediction.cpython-38.pyc
-.DS_Store
-.DS_Store
-.DS_Store
-static/.DS_Store
+
 data/db/journal/*
 data/db/diagnostic.data/*
+Models/*
 
 # See http://help.github.com/ignore-files/ for more about ignoring files.
 
@@ -55,5 +53,6 @@ data/db/diagnostic.data/*
 .DS_Store
 Thumbs.db
 __pycache__/*
+
 
 
