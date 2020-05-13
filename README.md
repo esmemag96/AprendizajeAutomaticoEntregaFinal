@@ -32,7 +32,7 @@ docker-compose build
 ``` 
 y repetir el paso 4.
 
-6. Buscar la dirreccion localhost:5000 
+6. Buscar la dirreccion localhost o localhost:80 
 
 7. Da click en el boton de train para entrenar el modelo con el dataset
 
