@@ -77,12 +77,13 @@ Archivo que se utiliza para cargar las dependencias del contenedor de flask, por
 ### docker-compose.yml: 
 Archivo Docker-Compose para levantar todos los contenedores necesarios (Flask, NGINX).
 
-#Arquitectura
+# Arquitectura
 
 # Versión Final
-## ∂La versión final consistirá en lo siguiente:
+## La versión final consistirá en lo siguiente:
 - Login alumnos, para poder hacer las evaluaciones de sus clases.
 - Login de profesores para poder acceder al dashboard de profesores
 - Dashboard de profesores para ver las evaluaciones realizadas por los alumnos, asi como una predicción sobre cual es su futura calificación dependiendo de su actual evaluación.
+- Capacidad de que los profesores puedan ver sus evaluaciones y palabras clave de cada una para poder recibir retroalimentación más efectiva.
 
 
