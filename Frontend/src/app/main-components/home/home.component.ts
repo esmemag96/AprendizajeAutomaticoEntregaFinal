@@ -24,6 +24,8 @@ export class HomeComponent implements OnInit {
   trainModelSucces: boolean;
   errorMessage: string;
 
+  predictionColor: string;
+
   constructor(
     private scoreService: ScoreService,
     private formBuilder: FormBuilder,
@@ -68,6 +70,15 @@ export class HomeComponent implements OnInit {
         this.isLoadingFinalScore = false;
         this.result = predictResponse.prediction;
         this.result = Math.round(Number(this.result) * 100)/100;
+
+        if(this.result >= 70){
+          this.predictionColor = "rgb(51, 153, 22)";
+        }else if(this.result < 70 && this.result >= 40){
+          this.predictionColor = "rgb(254, 166, 2)";
+        }else{
+          this.predictionColor = "rgb(226, 27, 60)";
+        }
+
         return this.result;
       },
       (err) => {
