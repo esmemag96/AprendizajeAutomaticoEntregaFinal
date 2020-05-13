@@ -43,7 +43,7 @@
     <div class="cardSection right">
       <div class="results">
         <div *ngIf="result" class="result">
-          <span class="score">{{result}}</span>
+          <span class="score" [style.color]="predictionColor">{{result}}</span>
           <span>Prediction Score</span>
         </div>
         <span *ngIf="!result" class="no-result">No data to show</span>
