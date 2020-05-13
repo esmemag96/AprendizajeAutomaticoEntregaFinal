@@ -23,7 +23,6 @@ export class AnalizeTextComponent implements OnInit {
     private formBuilder: FormBuilder
   ) {
     this.isLoadingAnalisis = false;
-
     this.analisisError = false;
   }
   ngOnInit() {
@@ -50,9 +49,9 @@ export class AnalizeTextComponent implements OnInit {
         this.isLoadingAnalisis = false;
         this.resultScore = predictResponse[0].documents[0].score;
         this.resultScore = String(Math.round((Number(this.resultScore) * 100) * 100)/100);
-        this.resultKeys = predictResponse[1].documents[0].keyPhrases
+        this.resultKeys = predictResponse[1].documents[0].keyPhrases;
+        return this.resultScore;
         console.log(predictResponse);
-        console.log(this.resultKeys);
       },
       (err) => {
         this.isLoadingAnalisis = false;

@@ -11,7 +11,7 @@ import { Graph } from "../../model/Graph";
 })
 export class HomeComponent implements OnInit {
   scoreForm: FormGroup;
-  result: string;
+  result: number;
   // Handle Loading
   isLoadingFinalScore: boolean;
   isLoadingTrainModel: boolean;
@@ -61,7 +61,7 @@ export class HomeComponent implements OnInit {
       (predictResponse) => {
         this.isLoadingFinalScore = false;
         this.result = predictResponse.prediction;
-        this.result = String(Math.round(Number(this.result) * 100)/100);
+        this.result = Math.round(Number(this.result) * 100)/100;
         return this.result;
       },
       (err) => {

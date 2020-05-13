@@ -26,7 +26,7 @@
             *ngIf="scoreForm.controls['grade2'].invalid && (scoreForm.controls['grade2'].dirty || scoreForm.controls['grade2'].touched)"
             class="alert">
             <div *ngIf="scoreForm.controls['grade2'].errors.required">
-              Garde 2 is required
+              Grade 2 is required
             </div>
           </div>
           <input formControlName="grade2" type="number" name="2ndGrade" placeholder="Second Year Grade (1 to 100) *"
