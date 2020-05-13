@@ -58,24 +58,16 @@ función `Train()`: Importamos nuestro dataset, este conjunto de datos contiene 
 
 Se ajusta el modelo de regresión lineal múltiple a nuestro conjunto de entrenamiento. Utilizamos el método de ajuste junto con los argumentos del método de ajuste, los cuales serán conjuntos de entrenamiento y luego creamos un modelo de archivo que contiene el modelo de entrenamiento.
 
-## Archivos Front End:
-### /static/style.css:
-Hoja de estilos para el HTML.
-### /static/app.js:
-Archivo JavaScript que se encarga de realizar las solicitudes al servidor Flask.
-
-Funcion `sendRequest()`:Se encarga de recopilar las entradas del usuario en la forma del HTML, formatearlas en formato JSON y de enviarlas asincronamente, asimismo de esperar su respuesta para mostrarla al usuario.
-
-Funcion `trainModelRequest()`:Se encarga de enviar una solicitud a la API para que vuelva a entrenar el modelo.
-
-### /templates/index.html: 
-HTML que contiene una pequeña forma para suministrar a la API con la información que necesita, asimismo contiene un botón que sirve para decirle a la API que debe entrenar el modelo nuevamente.
+## Archivos Front End (Angular):
+### Frontend/
 
 ## Archivos Docker:
 ### Dockerfile-nginx: 
 Dockerfile para el contenedor de NGINX.
 ### Dockerfile-flask: 
 Dockerfile para el contenedor de FLASK.
+### Dockerfile-angular: 
+Dockerfile para el contenedor de Angular.
 ### app.conf: 
 Archivo de configuración para el contenedor de NGINX, usado en Dockerfile-nginx.
 ### app.ini: 
@@ -84,3 +76,12 @@ Archivo de configuración para el contenedor de FLASK, usado en Dockerfile-flask
 Archivo que se utiliza para cargar las dependencias del contenedor de flask, por ejemplo ´numpy´.
 ### docker-compose.yml: 
 Archivo Docker-Compose para levantar todos los contenedores necesarios (Flask, NGINX).
+
+#Arquitectura
+
+#Versión Final
+##La versión final consistirá en lo siguiente:
+-Login alumnos, para poder hacer las evaluaciones de sus clases.
+-Login de profesores para poder acceder al dashboard de profesores
+-Dashboard de profesores para ver las evaluaciones realizadas por los alumnos, asi como una predicción sobre cual es su futura calificación dependiendo de su actual evaluación.
+-
