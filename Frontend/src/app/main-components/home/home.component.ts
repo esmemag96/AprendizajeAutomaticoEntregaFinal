@@ -61,7 +61,7 @@ export class HomeComponent implements OnInit {
       (predictResponse) => {
         this.isLoadingFinalScore = false;
         this.result = predictResponse.prediction;
-        console.log(this.result);
+        this.result = String(Math.round(Number(this.result) * 100)/100);
         return this.result;
       },
       (err) => {

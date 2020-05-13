@@ -247,7 +247,7 @@ body {
   
   section {
     width: 100%;
-    padding: 35px 35px;
+    padding: $globalPadding;
   }
 
   .title{
@@ -261,6 +261,7 @@ body {
     position: relative;
     padding: 30px;
     box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+    margin-bottom: 25px;
   }
 
   .card-full{

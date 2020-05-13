@@ -1,14 +1,50 @@
 @import '../../../variables';
 
-.grade{
-    width: 60%;
+.left {
+  width: 60%;
+}
 
-    .gradeForm{
-        margin-bottom: 10px;
+.right {
+  width: 40%;
+}
 
-        .alert{
-            font-size: 0.8em;
-            color: $tertiary;
-        }
+.grade {
+
+  .gradeForm {
+    margin-bottom: 10px;
+
+    .alert {
+      font-size: 0.8em;
+      color: $tertiary;
+      margin-bottom: 3px;
     }
+  }
+}
+
+.results {
+  font-weight: bold;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .result {
+    font-size: 1.3em;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+
+    .score {
+      font-size: 3em;
+      margin-bottom: 10px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid $medium;
+      color: $secondary;
+    }
+  }
+
+  .no-result {
+    font-size: 2em;
+    color: $medium;
+  }
 }
