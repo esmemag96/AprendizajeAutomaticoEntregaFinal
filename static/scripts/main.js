@@ -80,14 +80,13 @@ function getGraphs(teacherID) {//Function to request the server a new trained mo
 }
 
 function setChart(data) {
-    var ctx = document.getElementById('myChart').getContext('2d');
     new Chart(document.getElementById("myChart"), {
         type: 'bar',
         data: {
           labels: data['arr1'],
           datasets: [
             {
-              label: "eXAMPO",
+              label: "Example",
               backgroundColor: "#3e95cd",
               data: data['arr1']
             }
