@@ -15,113 +15,74 @@ from sklearn.tree import DecisionTreeRegressor
 from sklearn import metrics
 from sklearn import tree
 import statsmodels as sm
+import statsmodels.formula.api as smf
 from sklearn.preprocessing import MinMaxScaler
 
 
 from statistics import stdev 
 from statistics import mean 
 
-def Train():
+def Train(idprofesor,idclass):
 	# Importing the dataset:
-	pb_df = pd.read_csv("train.csv")
+		pb_df = pd.read_csv("newTrain.csv")
+		
+		pb_df.set_index('instr', inplace=True)#index intructor
+		tGrades = pb_df.loc[idprofesor]#idteacher
+		tGrades.set_index('class', inplace=True)#index class
+		tGrades = tGrades.loc[idclass]##id class
+
+		df2=pd.DataFrame(tGrades,columns=['Ecoa1','Ecoa2'])#new data frame fro the graph
+		df2['Ecoa3']=pd.DataFrame(tGrades,columns=['Ecoa3'])
+
+		x = df2['Ecoa1']#x variables
+		y = df2['Ecoa1']#y variable
+		
+		model = smf.ols(formula='Ecoa3 ~ Ecoa1 + Ecoa2', data=df2)#linear regression model 
+		results_formula = model.fit()#Fit multiple Linear Regression model to our Train set
+		
+		## Prepare the data for Visualization
+
+		x_surf, y_surf = np.meshgrid(np.linspace(df2.Ecoa1.min(), df2.Ecoa1.max(), 100),np.linspace(df2.Ecoa2.min(), df2.Ecoa2.max(), 100))
+		onlyX = pd.DataFrame({'Ecoa1': x_surf.ravel(), 'Ecoa2': y_surf.ravel()})
+		fittedY=results_formula.predict(exog=onlyX)
+
+		## convert the predicted result in an array
+		fittedY=np.array(fittedY)
+		#get the graph with the 3 axis
+		fig = plt.figure()
+		ax = fig.add_subplot(111, projection='3d')
+		ax.plot_surface(x_surf,y_surf,fittedY.reshape(y_surf.shape), rstride=3, cstride=3,cmap='inferno', edgecolor='none', alpha=.6)
+		ax.scatter(df2['Ecoa1'],df2['Ecoa2'],df2['Ecoa3'],color='black', s=30, edgecolor='black', alpha=.9)
+		ax.set_xlabel('Ecoa1')
+		ax.set_ylabel('Ecoa2')
+		ax.set_zlabel('Ecoa3')
+		#save image in filename 
+		filenameImage = '../Image3D/'+ idprofesor +idclass+ '.png'
+		fig.savefig(filenameImage, dpi = 300, transparent=True)
+		#get the 3 variables 
+		x1 = tGrades['Ecoa1'] 
+		x2 = tGrades['Ecoa2'] 
+		x3 = tGrades['Ecoa3']
+		df = pd.DataFrame({"Ecoa1": x1, "Ecoa2": x2, "Ecoa3": x3})
+
+		scaler = MinMaxScaler()
+		scaled_df = scaler.fit_transform(df)
+		scaled_df = pd.DataFrame(scaled_df, columns=['Ecoa1', 'Ecoa2', 'Ecoa3'])
+		
+		X = scaled_df[['Ecoa1','Ecoa2']]
+		y = scaled_df['Ecoa3']
+
+		X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=0)
+		#Fit the linear regression model to the training set, We use the fit method the arguments of the fit method will be training sets
+		regressor = linear_model.LinearRegression()
+		regressor.fit(X_train, y_train)
+		#filename instructore
+		filename = '../Models/model'+ idprofesor +idclass+ '.pkl'
+		#Create a file model containing the training model
+		pickle.dump(regressor, open(filename,'wb'))
+
+		return True
 	
-	#this data set contains 28 questions which we divide into 3 sections, each section is referred to as a school year 
-	evaluacion1 = pb_df.iloc[:, 23:32].sum(axis=1)#get the sum of the elements in the column 23 to 32
-	pb_df.insert(1, "score3", evaluacion1, True) #add the column in the dataset 
-	evaluacion2 = pb_df.iloc[:, 14:23].sum(axis=1)#get the sum of the elements in the column 14 to 23
-	pb_df.insert(1, "score2", evaluacion2, True) #add the column in the dataset 
-	evaluacion3 = pb_df.iloc[:, 5:14].sum(axis=1)#get the sum of the elements in the column 5 to 14
-	pb_df.insert(1, "score1", evaluacion3, True)#add the column in the dataset 
-
-	X = pb_df.iloc[:, :3]#the x-axis in the multilinear regression will be the column [instr, score 1, score 2]
-	y = pb_df.iloc[:, 3]#the y-axis in the multilinear regression will be the column [score3] this will be the prediction 
-	
-	#Splitting the dataset into the Training and Test dataset
-	X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=0)#Split the dataset in 20% test and 80% train
-	
-	#Fit multiple Linear Regression model to our Train set
-	from sklearn.linear_model import LinearRegression
-	
-	#Create an object called regressor in the LinearRegression class()
-	regressor = LinearRegression()
-	
-	#Fit the linear regression model to the training set, We use the fit method the arguments of the fit method will be training sets
-	regressor.fit(X_train,y_train)
-	
-	#Create a file model containing the training model
-	pickle.dump(regressor, open('Models/model.pkl','wb'))
-	
-	#Read the file model containing the training model
-	model = pickle.load(open('Models/model.pkl','rb'))
-	
-	#Predicting the Test set results:
-	# scores_0 = cross_val_score(model, X_train, y_train, cv=5)
-	# print("Accuracy: %0.2f (+/-%0.2f)" % (scores_0.mean(),scores_0.std()*2))
-
-	return True
-	
-def Grafica3d():
-	pb_df = pd.read_csv("train.csv")
-	evaluacion1 = pb_df.iloc[:, 23:32].sum(axis=1)
-	pb_df.insert(1, "score3", evaluacion1, True) 
-	evaluacion2 = pb_df.iloc[:, 14:23].sum(axis=1)
-	pb_df.insert(1, "score2", evaluacion2, True) 
-	evaluacion3 = pb_df.iloc[:, 5:14].sum(axis=1)
-	pb_df.insert(1, "score1", evaluacion3, True)
-
-	X = pb_df[['score1','score2']]
-	Y = pb_df['score3']
-
-	# split en 3 varibles 
-	x = X['score1']# score1
-	y = X['score2']# score2
-	z = Y # score3
-
-	x_pred = np.linspace(x.min(), x.max(), 45)  # rangos del score1
-	y_pred = np.linspace(y.min(), y.max(), 45)  # rangos del score2
-
-	xx_pred, yy_pred = np.meshgrid(x_pred, y_pred)  # haces el mesh de los datos para la grafica 
-	model_viz = np.array([xx_pred.flatten(), yy_pred.flatten()]).T #unes todos los elementos a predecir en un arreglo
-	################################################ Train #############################################
-
-	ols = linear_model.LinearRegression()
-	model = ols.fit(X, Y)
-	predicted = model.predict(model_viz)# prediction para evaluar en el futuro 
-	############################################## Evaluate ############################################
-
-	r2 = model.score(X, Y)#r^2 para saber que tan accurate es la prediction 
-
-	############################################## Plot ################################################
-	plt.style.use('default')
-
-	fig = plt.figure(figsize=(12, 4))
-
-	# creas los axes de la grafica 
-	ax1 = fig.add_subplot(131, projection='3d')
-	ax2 = fig.add_subplot(132, projection='3d')
-	ax3 = fig.add_subplot(133, projection='3d')
-
-	axes = [ax1, ax2, ax3]
-
-	for ax in axes:#metes todos los datos 
-		ax.plot(x, y, z, color='k', zorder=5, linestyle='none', marker='o', alpha=0.3)
-		ax.scatter(xx_pred.flatten(), yy_pred.flatten(), predicted, facecolor=(1,1,1,1), s=20, edgecolor='#70b3f0')
-
-		ax.set_xlabel('score1', fontsize=12)
-		ax.set_ylabel('score2', fontsize=12)
-		ax.set_zlabel('score3', fontsize=12)
-		ax.locator_params(nbins=4, axis='x')
-		ax.locator_params(nbins=5, axis='x')
-
-
-	ax1.view_init(elev=27, azim=112)
-	ax2.view_init(elev=16, azim=-51)
-	ax3.view_init(elev=44, azim=350)
-	fig.suptitle('$R^2 = %.2f$' % r2, fontsize=20) # R^2 del modelo 
-
-	fig.tight_layout()
-	fig.savefig('static/img/grafica.png', transparent=True)
-	return True
 def TrainTree():
 	# Importing the dataset:
 	pb_df = pd.read_csv("train.csv")

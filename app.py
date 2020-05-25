@@ -27,8 +27,10 @@ def predict():
     else:  # Else, data is the json sent from the client.
         data = request.get_json()
         # The features are retreived from the JSON object and inserted in a list.
-        int_features = [data['TeacherID'], data['grade1'] * .45, data['grade2'] * .45]
-        # final features is a numpy array, made of the list from above.
+        int_features = [data['grade1'] * .45, data['grade2'] * .45]
+        #---filename = '../Models/model'+ data['TeacherID'] + data['ClassID']+ '.pkl'
+        #---modelTree = pickle.load(open(filename, 'rb'))
+        #final features is a numpy array, made of the list from above.
         final_features = [np.array(int_features)]
         prediction = modelTree.predict(final_features)  # The prediction is made.
         # The result from the prediction is rounded.
