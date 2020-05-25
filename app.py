@@ -37,7 +37,7 @@ def predict():
         # The result from the prediction is rounded.
         output = round(prediction[0], 2) / .45
         # The result from the prediction is formated into JSON format.
-        result = json.dumps({'predictionResult': output, "status": "It Works!"})
+        result = json.dumps({'predictionResult': output, "status": "Success"})
     return result  # The result is returned to the client.
 # Request to train the model using the dataset
 
@@ -46,12 +46,12 @@ def getGraphs():
     teacherID = request.args.get('TeacherID')
     classID = request.args.get('ClassID')
     if(teacherID == None or classID == None):
-        response =  { 'Status' : 'Failure'}
+        response =  { 'status' : 'Failure'}
     else:
         image_path = 'Images/' + teacherID + classID + ".png"
         image = Train.getImage(image_path)
         x = Train.GraficaMean(teacherID)
-        response =  { 'Status' : 'Success', 'ImageBytes': image, "graphData": x}
+        response =  { 'status' : 'Success', 'ImageBytes': image, "graphData": x}
     return json.dumps(response)
 
 if __name__ == "__main__":
