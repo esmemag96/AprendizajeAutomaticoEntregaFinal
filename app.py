@@ -11,77 +11,49 @@ app.config['JSON_AS_ASCII'] = False
 
 CORS(app, expose_headers='Authorization')
 
-
-model = pickle.load(open('Models/model.pkl', 'rb'))
-modelTree = pickle.load(open('Models/modelTree.pkl', 'rb'))
 # Request to return the index.html
 @app.route('/')
 def home():
     return render_template('index.html')
 # Request to return a new prediction.
-@app.route('/predict', methods=['POST'])
+@app.route('/predict', methods=['GET'])
 def predict():
     # If the request is not on JSON format, then return an error to the client.
-    if(request.is_json == False):
-        return json.dumps({'result': "Error"})
-    else:  # Else, data is the json sent from the client.
-        data = request.get_json()
-        # The features are retreived from the JSON object and inserted in a list.
-        int_features = [data['grade1'] * .45, data['grade2'] * .45]
-        #---filename = '../Models/model'+ data['TeacherID'] + data['ClassID']+ '.pkl'
-        #---modelTree = pickle.load(open(filename, 'rb'))
+    teacherID = request.args.get('TeacherID')
+    grade1 = float(request.args.get('grade1'))
+    grade2 = float(request.args.get('grade2'))
+    classID = request.args.get('ClassID')
+
+    if(teacherID == None or grade1 == None or grade2 == None or classID == None):
+        result = json.dumps({'predictionResult': None, "status": "Something went wrong with the prediction."})
+    else:
+        int_features = [grade1 * .45, grade2 * .45]
+        Train.Train(teacherID, classID)
+        filename = 'Models/model'+ teacherID + classID + '.pkl'
+        modelTree = pickle.load(open(filename, 'rb'))
         #final features is a numpy array, made of the list from above.
         final_features = [np.array(int_features)]
         prediction = modelTree.predict(final_features)  # The prediction is made.
         # The result from the prediction is rounded.
         output = round(prediction[0], 2) / .45
         # The result from the prediction is formated into JSON format.
-        result = json.dumps({'prediction': output})
+        result = json.dumps({'predictionResult': output, "status": "It Works!"})
     return result  # The result is returned to the client.
 # Request to train the model using the dataset
 
-@app.route('/train', methods=['POST', 'GET'])
-def trainModel():
-    # If the request is not on JSON format, then return an error to the client.
-    if(request.is_json == False):
-        return json.dumps({'result': "bad post"})
-    else:  # Else call the function 'Train()'
-        # Return a json object with the result of the call (T or F)
-        return json.dumps({'multilineal': Train.Train(), 'threeD': Train.Grafica3d(), 'tree': Train.TrainTree()})
-@app.route('/getGraphs', methods=['POST'])
+@app.route('/getGraphs', methods=['GET'])
 def getGraphs():
-    # If the request is not on JSON format, then return an error to the client.
-    if(request.is_json == False):
-        return json.dumps({'result': "bad post"})
-    else:  # Else call the function 'Train()'
-        content = request.json
-        image_path = 'static/img/grafica.png'
+    teacherID = request.args.get('TeacherID')
+    classID = request.args.get('ClassID')
+    if(teacherID == None or classID == None):
+        response =  { 'Status' : 'Failure'}
+    else:
+        image_path = 'Images/' + teacherID + classID + ".png"
         image = Train.getImage(image_path)
-        if(content['teacherID'] == -1):
-            response =  { 'Status' : 'Success', 'ImageBytes': image}
-        else:
-            x = Train.GraficaMean(content['teacherID'])
-            response =  { 'Status' : 'Success', 'ImageBytes': image, "meanGraph": x}
-        return json.dumps(response)
-        
-@app.route('/text-analysis')
-def textAnalysis():
-    return render_template('textAnalysis.html')
+        x = Train.GraficaMean(teacherID)
+        response =  { 'Status' : 'Success', 'ImageBytes': image, "graphData": x}
+    return json.dumps(response)
 
-@app.route('/translate-text', methods=['POST'])
-def translate_text():
-    data = request.get_json()
-    text_input = data['text']
-    translation_output = data['to']
-    response = translate.get_translation(text_input, translation_output)
-    return jsonify(response)
-
-@app.route('/sentiment-analysis', methods=['POST'])
-def sentiment_analysis():
-    data = request.get_json()
-    input_text = data['inputText']
-    response = sentiment.get_sentiment(input_text)
-    return jsonify(response)
 if __name__ == "__main__":
     debug = settings.DEBUG  # My settings object
     if (debug):
