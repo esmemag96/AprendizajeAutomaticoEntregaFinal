@@ -124,25 +124,9 @@ def TrainTree():
 	return True
 	
 def GraficaMean(id_instr):
-# Importing the dataset:
-	pb_df = pd.read_csv("train.csv")
-	#this data set contains 28 questions which we divide into 3 sections, each section is referred to as a school year 
-	evaluacion1 = pb_df.iloc[:, 23:32].sum(axis=1)#get the sum of the elements in the column 23 to 32
-	pb_df.insert(1, "score3", evaluacion1, True) #add the column in the dataset 
-	evaluacion2 = pb_df.iloc[:, 14:23].sum(axis=1)#get the sum of the elements in the column 14 to 23
-	pb_df.insert(1, "score2", evaluacion2, True) #add the column in the dataset 
-	evaluacion3 = pb_df.iloc[:, 5:14].sum(axis=1)#get the sum of the elements in the column 5 to 14
-	pb_df.insert(1, "score1", evaluacion3, True)#add the column in the dataset 
-
-	x1 = pb_df['score1'] 
-	x2 = pb_df['score2'] 
-	x3 = pb_df['score3']
-	instr = pb_df['instr']
-	df = pd.DataFrame({"instr": instr,"score1": x1, "score2": x2, "score3": x3})
-	df.set_index('instr', inplace=True)
-	tGrades = df.loc[id_instr]
-	x = tGrades['score1']
-	y = tGrades['score2']
+	pb_df = pd.read_csv("helperScrpits/newTrain.csv")
+	x = pb_df['Ecoa1']
+	y = pb_df['Ecoa2']
 
 	dict= {
 		"arr1":np.array(x).tolist(),#arr1 = score1
