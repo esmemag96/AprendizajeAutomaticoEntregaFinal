@@ -23,7 +23,6 @@ def predict():
     grade1 = request.args.get('grade1')
     grade2 = request.args.get('grade2')
     classID = request.args.get('ClassID')
-
     try:
         grade1 = float(grade1)
         grade2 = float(grade2)
@@ -61,7 +60,7 @@ def getGraphs():
     else:
         try:
             image = Train.getImage('Images/' + teacherID + classID + ".png")
-            response =  { 'status' : 'Success', '3DGraph': image, "graphData": Train.GraficaMean(teacherID)}
+            response =  { 'status' : 'Success', '3DGraph': image, "graphData": Train.GraficaMean(teacherID,classID)}
         except FileNotFoundError:
             response =  { 'status' : 'Failure', '3DGraph': None, 'comment': "The class or teacher ID is not correct"}
     return json.dumps(response)
