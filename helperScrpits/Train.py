@@ -129,9 +129,9 @@ def GraficaMean(id_instr):
 	y = pb_df['Ecoa2']
 
 	dict= {
-		"arr1":np.array(x).tolist(),#arr1 = score1
+		"ecoa1":np.array(x).tolist(),#arr1 = score1
 		"mean1":np.mean(x),#mean1 = mean(score1)
-		"arr2":np.array(y).tolist(),#arr2 = score2
+		"ecoa2":np.array(y).tolist(),#arr2 = score2
 		"mean2":np.mean(y)}#mean2 = mean(score2)
 	return dict
 
