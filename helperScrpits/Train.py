@@ -123,19 +123,24 @@ def TrainTree():
 	# print("Accuracy: %0.2f (+/-%0.2f)" % (scores_0.mean(),scores_0.std()*2))
 	return True
 	
-def GraficaMean(id_instr):
+def GraficaMean(idprofesor,idclass):
+	
 	pb_df = pd.read_csv("helperScrpits/newTrain.csv")
-	x = pb_df['Ecoa1']
-	y = pb_df['Ecoa2']
+	pb_df.set_index('instr', inplace=True)#index intructor
+	tGrades = pb_df.loc[idprofesor]#idteacher
+	tGrades.set_index('class', inplace=True)#index class
+	tGrades = tGrades.loc[idclass]##id class
+
+	x = tGrades['Ecoa1']
+	y = tGrades['Ecoa2']
 
 	dict= {
-		"ecoa1":np.array(x).tolist(),#arr1 = score1
+		"Ecoa1":np.array(x).tolist(),#arr1 = score1
 		"mean1":np.mean(x),#mean1 = mean(score1)
-		"ecoa2":np.array(y).tolist(),#arr2 = score2
+		"Ecoa2":np.array(y).tolist(),#arr2 = score2
 		"mean2":np.mean(y)}#mean2 = mean(score2)
 	return dict
-
-
+	
 def getImage(path):
 	with open(path, mode='rb') as file:
 		img = file.read()
