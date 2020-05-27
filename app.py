@@ -1,10 +1,13 @@
 import numpy as np
 import translate
+import os.path
+import pickle
+import json
+from os import path
 from flask import Flask, request, jsonify, render_template
 from flask_cors import CORS, cross_origin
 from helperScrpits import Train, sentiment
-import pickle
-import json
+
 
 app = Flask(__name__)
 app.config['JSON_AS_ASCII'] = False
@@ -36,9 +39,12 @@ def predict():
         result = json.dumps({'predictionResult': None, "status": "Failure", "comment": "The format of the input is not correct"})
     else:
         try:
-            int_features = [grade1 * .45, grade2 * .45]
-            Train.Train(teacherID, classID)
             filename = 'Models/model'+ teacherID + classID + '.pkl'
+            if(path.exists(filename) == False):
+                print("File does not exists, performing training")
+                Train.Train(teacherID, classID)
+                print("Training Successfull")
+            int_features = [grade1 * .45, grade2 * .45]
             modelTree = pickle.load(open(filename, 'rb'))
             #final features is a numpy array, made of the list from above.
             final_features = [np.array(int_features)]
