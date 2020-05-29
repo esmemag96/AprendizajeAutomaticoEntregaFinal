@@ -1,0 +1,25 @@
+apiVersion: apps/v1beta2
+kind: Deployment
+metadata:
+  name: quiz-backend
+  labels:
+    app: quiz-app
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: quiz-app
+    spec:
+      containers:
+      - name: quiz-backend
+        image: gcr.io/aprendizajeautmatico20/flask-app
+        imagePullPolicy: Always
+        resources:
+          requests:
+            memory: 256Mi
+          limits:
+            memory: 512Mi
+        env:
+          - name: aprendizajeautmatico20
+            value: aprendizajeautmatico20
