@@ -5,6 +5,11 @@
 export const environment = {
   production: false,
 
+  getStudentEndpoint: "http://localhost:7071/api/GetUser",
+  createEcoaEndpoint: "http://localhost:7071/api/Sentiments",
+  loginStudentEndpoint: "http://localhost:7071/api/studentLogin",
+  loginAdminEndpoint: "http://localhost:7071/api/professorLogin",
+  
   scoreApiEndpoint: "http://localhost:5000/predict",
   trainApiEndpoint: "http://localhost:5000/train",
   textApiEndpoint:  "http://localhost:5000/sentiment-analysis",

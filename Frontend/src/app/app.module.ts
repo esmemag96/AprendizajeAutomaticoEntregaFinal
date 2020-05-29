@@ -12,6 +12,9 @@ import { DashboardComponent } from './main-components/dashboard/dashboard.compon
 import { NotFoundComponent } from './main-components/not-found/not-found.component';
 import { NavBarComponent } from './main-components/nav-bar/nav-bar.component';
 import { AnalizeTextComponent } from './main-components/analize-text/analize-text.component';
+import { EcoaComponent } from './main-components/ecoa/ecoa.component';
+import { LoginComponent } from './main-components/login/login.component';
+import { LoginAdminComponent } from './main-components/login-admin/login-admin.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +23,10 @@ import { AnalizeTextComponent } from './main-components/analize-text/analize-tex
     DashboardComponent,
     NotFoundComponent,
     NavBarComponent,
-    AnalizeTextComponent
+    AnalizeTextComponent,
+    EcoaComponent,
+    LoginComponent,
+    LoginAdminComponent
   ],
   imports: [
     BrowserModule,
