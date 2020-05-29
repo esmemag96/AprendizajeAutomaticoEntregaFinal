@@ -4,14 +4,14 @@ services:
   image: webapp-flask
   build:
    context: ./Flask
-   dockerfile: ./Flask/Dockerfile
+   dockerfile: Dockerfile
   volumes:
    - "./Flask:/app"
   ports:
    - "5000:5000"
  angular-frontend:
    build:
-    context: ./Frontend
+    context: Frontend
     dockerfile: Dockerfile
    ports:
      - "80:4200"
