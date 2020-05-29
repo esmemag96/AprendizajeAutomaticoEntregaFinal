@@ -1,0 +1,30 @@
+apiVersion: apps/v1beta2
+kind: Deployment
+metadata:
+  name: flask-backend
+  labels:
+    name: flask-backend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: flask-backend
+  template:
+    metadata:
+      name: flask-backend
+      labels:
+        name: flask-backend
+    spec:
+      containers:
+        - name: flask-backend
+          image: gcr.io/aprendizaje-automatico/flask-backend
+          ports:
+            - containerPort: 8080
+          resources:
+            requests:
+              memory: 256Mi
+            limits:
+              memory: 512Mi
+          env:
+            - name: DEBUG_MODE
+              value: "1"

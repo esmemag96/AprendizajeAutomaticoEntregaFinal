@@ -1,29 +1,20 @@
- version: '3'
- services:
-  flask-backend:
-   image: webapp-flask
+version: '3'
+services:
+ flask-backend:
+  image: webapp-flask
+  build:
+   context: ./Flask
+   dockerfile: ./Flask/Dockerfile
+  volumes:
+   - "./Flask:/app"
+  ports:
+   - "5000:5000"
+ angular-frontend:
    build:
-    context: .
-    dockerfile: Dockerfile-flask
-   volumes:
-    - "./:/app"
-  nginx-frontend:
-   image: webapp-nginx
-   build:
-    context: .
-    dockerfile: Dockerfile-nginx
+    context: ./Frontend
+    dockerfile: Dockerfile
    ports:
-    - 5000:80
-   depends_on:
-    - flask-backend
-  node-angular:
-    build:
-     context: .
-     dockerfile: Dockerfile-angular
-    ports:
-      - "80:4200"
-    volumes:
-      - ./Frontend/:/usr/src/app
-    command: yarn run start
-
-    
+     - "80:4200"
+   volumes:
+     - ./Frontend:/usr/src/app
+   command: yarn run start
