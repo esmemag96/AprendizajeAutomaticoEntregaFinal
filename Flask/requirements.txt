@@ -18,3 +18,4 @@ flask_pymongo
 statistics
 translate
 flask_cors
+gunicorn

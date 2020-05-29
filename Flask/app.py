@@ -8,7 +8,6 @@ from flask import Flask, request, jsonify, render_template
 from flask_cors import CORS, cross_origin
 from helperScrpits import Train, sentiment
 
-
 app = Flask(__name__)
 app.config['JSON_AS_ASCII'] = False
 
@@ -17,7 +16,7 @@ CORS(app, expose_headers='Authorization')
 # Request to return the index.html
 @app.route('/')
 def home():
-    return render_template('index.html')
+    return "hello"
 # Request to return a new prediction.
 @app.route('/predict', methods=['GET'])
 def predict():
