@@ -7,6 +7,11 @@ FLASK (localhost:5000):
             grade2: <0...100>
         returns:
             {"predictionResult": 95.6888888888889 || None, "status": "Success || Failure", "comment": <comment>}
+        Testing values:
+            ClassID: TC2011
+            TeacherID: RF01023352
+            grade1: 100
+            grade2: 100
     /getGraphs: GET
         PARAMS: 
             TeacherID: <TeacherID>  
@@ -23,3 +28,7 @@ FLASK (localhost:5000):
                 }, 
                 "comment": <comment>
             }
+            
+        Testing values:
+            ClassID: TC2011
+            TeacherID: RF01023352
