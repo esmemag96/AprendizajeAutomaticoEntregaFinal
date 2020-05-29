@@ -1,0 +1,74 @@
+<section>
+  <div class="card card-full card-flex">
+    <div class="cardSection">
+      <h1> {{studentName}}</h1>
+      <h2> {{matricula}}</h2>
+    </div>
+  </div>
+  <form *ngFor="let class of classes" class="gradeForm" #thisScoreForm="ngForm" [formGroup]="scoreForm"
+    (ngSubmit)="submitScore(class.class._id,class.teachear._id)">
+    <div class="card grade">
+      <h1 class="title">Materia: {{class.class.className}}</h1>
+      <h1 class="title"> Profesor: {{class.teachear.name}}</h1>
+      <div class="form-group">
+        <div
+          *ngIf="scoreForm.controls['question1'].invalid && (scoreForm.controls['question1'].dirty || scoreForm.controls['question1'].touched)"
+          class="alert">
+          <div *ngIf="scoreForm.controls['question1'].errors.required">
+            Esta pregunta es obligatoria
+          </div>
+        </div>
+        <label for="question1">¿Qué opinas sobre las tareas?</label>
+        <textarea formControlName="question1" type="text" name="TeacherID" placeholder="Escriba su respuesta"
+          id="TeacherID" required="required"></textarea>
+        <div
+          *ngIf="scoreForm.controls['question2'].invalid && (scoreForm.controls['question2'].dirty || scoreForm.controls['question2'].touched)"
+          class="alert">
+          <div *ngIf="scoreForm.controls['question2'].errors.required">
+            Esta pregunta es obligatoria
+          </div>
+        </div>
+        <label for="question2">¿Qué opinas sobre el trabajo en clase?</label>
+        <textarea formControlName="question2" type="text" name="TeacherID" placeholder="Escriba su respuesta"
+          id="TeacherID" required="required"> </textarea>
+        <div
+          *ngIf="scoreForm.controls['question3'].invalid && (scoreForm.controls['question3'].dirty || scoreForm.controls['question3'].touched)"
+          class="alert">
+          <div *ngIf="scoreForm.controls['question3'].errors.required">
+            Esta pregunta es obligatoria
+          </div>
+        </div>
+        <label for="question3">¿Qué opinas sobre los exámenes/proyectos?</label>
+        <textarea formControlName="question3" type="text" name="TeacherID" placeholder="Escriba su respuesta"
+          id="TeacherID" required="required"></textarea>
+        <div
+          *ngIf="scoreForm.controls['question4'].invalid && (scoreForm.controls['question4'].dirty || scoreForm.controls['question4'].touched)"
+          class="alert">
+          <div *ngIf="scoreForm.controls['question4'].errors.required">
+            Esta pregunta es obligatoria
+          </div>
+        </div>
+        <label for="question4">¿Qué opinas sobre la evaluación de la clase?</label>
+        <textarea formControlName="question4" type="text" name="TeacherID" placeholder="Escriba su respuesta"
+          id="TeacherID" required="required"></textarea>
+        <div
+          *ngIf="scoreForm.controls['question5'].invalid && (scoreForm.controls['question5'].dirty || scoreForm.controls['question5'].touched)"
+          class="alert">
+          <div *ngIf="scoreForm.controls['question5'].errors.required">
+            Esta pregunta es obligatoria
+          </div>
+        </div>
+        <label for="question5">¿Qué opinas sobre la clase en general?</label>
+        <textarea formControlName="question5" type="text" name="TeacherID" placeholder="Escriba su respuesta"
+          id="TeacherID" required="required"></textarea>
+      </div>
+      <button class="btn btn-primary btn-block" type="submit" [disabled]="!scoreForm.valid">
+        <span>Evaluar profesor</span>
+      </button>
+    </div>
+  </form>
+</section>
+
+<div class="popup popup-red" *ngIf="scoreError || trainModelError">
+  <span>{{errorMessage}}</span>
+</div>
