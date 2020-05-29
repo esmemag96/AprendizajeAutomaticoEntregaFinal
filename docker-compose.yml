@@ -4,7 +4,7 @@ services:
   image: webapp-flask
   build:
    context: ./Flask
-   dockerfile: ./Flask/Dockerfile
+   dockerfile: Dockerfile
   volumes:
    - "./Flask:/app"
   ports:
