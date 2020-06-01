@@ -1,7 +1,7 @@
 # Flask API
 Ruta Desarrollo: http://127.0.0.1:5000/
 
-**Train**
+**Train** 🌟
 ----
 Quien sabe que entrena, solo dice entrenar.
 
@@ -27,7 +27,7 @@ None *pero también creo*
 ### **Sample Call**
 *este quien sabe*
 
-**Predict**
+**Predict** 🌟
 ----
 Quien sabe que predice.
 
@@ -53,7 +53,7 @@ None *pero también creo*
 ### **Sample Call**
 *este quien sabe*
 
-**Sentiment analysis**
+**Sentiment analysis** 🌟
 ----
 Análisis de sentimiento de un texto, quien sabe que sea el valor que regresa.
 
@@ -79,7 +79,7 @@ None *pero también creo*
 ### **Sample Call**
 *este quien sabe*
 
-**Get Graphs**
+**Get Graphs** 🌟
 ----
 No se que regresa ni como pedir ni por que método, imposible saber.
 
