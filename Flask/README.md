@@ -6,98 +6,121 @@ Ruta Desarrollo: http://127.0.0.1:5000/
 Quien sabe que entrena, solo dice entrenar.
 
 * ### **URL**
-        /train
+    `/train`
 
 * ### **Method**
-        GET
+    `GET`
 
 * ### **URL Params**
-        *creo que ninguno porque vale vergs*
+    **Required:** <br>
+    `creo que ninguno porque vale vergs`
 
-* ### **URL Params**
-        None *pero también creo*
+    **Optional:** <br>
+    `creo que ninguno porque vale vergs`
+
+* ### **Data Params**
+    <If making a post request, what should the body payload look like? URL Params rules apply here too.>
+
+    `None *pero también creo*`
 
 * ### **Success Response**
-        *no se, hay error*
+    `no se, hay error`
 
 * ### **Success Response**
-        *creo que no regresa ni verga, no tiene control de error*
+    `creo que no regresa ni verga, no tiene control de error`
 
 * ### **Sample Call**
-        *este quien sabe*
+    `este quien sabe`
 
 **Predict** 🌟
 ----
 Quien sabe que predice.
 
 * ### **URL**
-        /predict
+    `/predict`
 
 * ### **Method**
-        GET
+    `GET`
 
 * ### **URL Params**
-        *creo que ninguno porque vale vergs*
+    **Required:** <br>
+    `creo que ninguno porque vale vergs`
 
-* ### **URL Params**
-        None *pero también creo*
+    **Optional:** <br>
+    `creo que ninguno porque vale vergs`
+
+* ### **Data Params**
+    <If making a post request, what should the body payload look like? URL Params rules apply here too.>
+
+    `None *pero también creo`
 
 * ### **Success Response**
-        *no se, hay error*
+    `no se, hay error`
 
 * ### **Success Response**
-        *creo que no regresa ni verga, no tiene control de error*
+    `creo que no regresa ni verga, no tiene control de error`
 
 * ### **Sample Call**
-        *este quien sabe*
+    `este quien sabe`
 
 **Sentiment analysis** 🌟
 ----
 Análisis de sentimiento de un texto, quien sabe que sea el valor que regresa.
 
 * ### **URL**
-        /sentiment-analysis
+    `/sentiment-analysis`
 
 * ### **Method**
-        GET
+    `GET`
 
 * ### **URL Params**
-        *creo que ninguno porque vale vergs*
+    **Required:** <br>
+    `creo que ninguno porque vale vergs`
 
-* ### **URL Params**
+    **Optional:** <br>
+    `creo que ninguno porque vale vergs`
 
-        None *pero también creo*
+* ### **Data Params**
+    <If making a post request, what should the body payload look like? URL Params rules apply here too.>
+
+    `None *pero también creo*`
 
 * ### **Success Response**
-        *no se, hay error*
+    `no se, hay error`
 
 * ### **Success Response**
-        *creo que no regresa ni verga, no tiene control de error*
+    `creo que no regresa ni verga, no tiene control de error`
 
 * ### **Sample Call**
-        *este quien sabe*
+    `este quien sabe`
 
 **Get Graphs** 🌟
 ----
 No se que regresa ni como pedir ni por que método, imposible saber.
 
 * ### **URL**
-        /getGraphs
+    `/getGraphs`
 
 * ### **Method**
-        GET
+    `GET`
 
 * ### **URL Params**
-        *creo que ninguno porque vale vergs*
+    **Required:** <br>
+    `creo que ninguno porque vale vergs`
 
-* ### **URL Params**
-        None, *pero también creo*
+    **Optional:** <br>
+    `creo que ninguno porque vale vergs`
+
+* ### **Data Params**
+    <If making a post request, what should the body payload look like? URL Params rules apply here too.>
+
+    `None *pero también creo*`
 
 * ### **Success Response**
-        *no se, hay error*
+    `no se, hay error`
 
 * ### **Success Response**
-        *creo que no regresa ni verga, no tiene control de error*
+    `creo que no regresa ni verga, no tiene control de error`
 
 * ### **Sample Call**
-        *este quien sabe*
+    `este quien sabe`
