@@ -1,5 +1,6 @@
 export interface Professor {
-    classes: Array<Object>, 
+    _id: string,
+    classes: Array<any>, 
     idProfessor: string, 
     name: string,
     Ecoa1: number,

@@ -1,16 +1,25 @@
 <section>
     <div class="select-bar">
         <form [formGroup]="searchForm" (ngSubmit)="getProfessor()">
-            <input type="text" placeholder="Search Teacher by ID" formControlName="id">
+            <input type="text" placeholder="Search professor by ID" formControlName="id">
             <button class="btn btn-primary" type="submit" [disabled]="!searchForm.valid">Search</button>
         </form>
     </div>
 
-    <div class="no-professor" *ngIf="!professor">
+    <div class="no-professor" *ngIf="!professor && !professorError && !loadingProfessor">
         <span>Search a teacher</span>
     </div>
 
-    <div *ngIf="professor" class="professor">
+    <div class="no-professor" *ngIf="!professor && professorError && !loadingProfessor">
+        <span class="not-found">Professor not found</span>
+        <span class="mini">Search other professor</span>
+    </div>
+
+    <div class="no-professor" *ngIf="loadingProfessor">
+        <div class="loading"></div>
+    </div>
+
+    <div *ngIf="professor && !loadingProfessor" class="professor">
         <div class="header">
             <h1 class="title">Professor <span class="name">{{professor.name}}</span> </h1>
         </div>
@@ -19,7 +28,31 @@
             <h1 class="title">Ecoas</h1>
             <div *ngIf="professor?.classes?.length > 0" class="classes">
                 <div *ngFor="let class of professor?.classes">
-                    <h2 class="subtitle">{{class.className}} <span class="class-code">{{class.classCode}}</span> </h2>
+                    <div>
+                        <h2 class="subtitle">{{class.className}} <span class="class-code">{{class.classCode}}</span> </h2>
+                    </div>
+
+                    <div class="questions">
+                        <h4 class="title">Anonymous student</h4>
+                        <div class="question">
+                            <h5 class="q">¿Qué opinas sobre las tareas?</h5>
+                            <div class="response">
+                                <span>sentimiento:</span> <span>😃</span>
+                            </div>
+                        </div>
+                        <div class="question">
+                            <h5 class="q">¿Qué opinas sobre el trabajo en clase?</h5>
+                        </div>
+                        <div class="question">
+                            <h5 class="q">¿Qué opinas sobre los exámenes/proyectos?</h5>
+                        </div>
+                        <div class="question"> 
+                            <h5 class="q">¿Que opinas sobre la evaluación en clase?</h5>
+                        </div>
+                        <div class="question">
+                            <h5 class="q">¿Qué opinas sobre la clase en general?</h5>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div *ngIf="!professor?.classes?.length > 0">

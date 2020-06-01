@@ -61,6 +61,7 @@ export class EcoaService {
             idProfessor: idProfessor,
             idClass: idClass
         }
+
         return this.http.post(this.getEcoaURL, GetEcoasbyIdProfesorBody);
     }
 }
