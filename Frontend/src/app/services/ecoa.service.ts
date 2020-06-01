@@ -16,7 +16,6 @@ export class EcoaService {
     constructor(private http: HttpClient) {
     }
 
-
     loginStudent(User: User): Observable<any> {
 
         const getStudentRequest = {

@@ -9,7 +9,7 @@ En este pequeño proyecto, se implemento un modelo de regresión lineal  que pre
 
 # Diagrama de Arquitectura
 
-![Diagrama](arquitectura.png)
+![Diagrama](Architecture.jpg)
 
 # Prerrequisitos
 - `Docker`
@@ -37,7 +37,7 @@ docker-compose build
 ``` 
 y repetir el paso 4.
 
-6. Buscar la dirreccion localhost o localhost:80 
+6. Frontend: http://localhost:80 Backend: http://localhost:5000
 
 7. Da click en el boton de train para entrenar el modelo con el dataset
 
