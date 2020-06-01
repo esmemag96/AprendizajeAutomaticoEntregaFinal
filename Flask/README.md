@@ -44,7 +44,11 @@ Quien sabe que predice.
 
 * ### **URL Params**
     **Required:** <br>
-    `creo que ninguno porque vale vergs`
+    
+        TeacherID: <TeacherID>  
+        ClassID: <ClassID>
+        grade1: <0...100>
+        grade2: <0...100>
 
     **Optional:** <br>
     `creo que ninguno porque vale vergs`
@@ -55,7 +59,12 @@ Quien sabe que predice.
     `None *pero también creo`
 
 * ### **Success Response**
-    `no se, hay error`
+    ```json
+    {
+        "predictionResult": 95.6888888888889 || None, "status": "Success || Failure",
+        "comment": <comment>
+    }
+    ```
 
 * ### **Success Response**
     `creo que no regresa ni verga, no tiene control de error`
@@ -106,7 +115,9 @@ No se que regresa ni como pedir ni por que método, imposible saber.
 
 * ### **URL Params**
     **Required:** <br>
-    `creo que ninguno porque vale vergs`
+    
+        TeacherID: <TeacherID>  
+        ClassID: <ClassID>
 
     **Optional:** <br>
     `creo que ninguno porque vale vergs`
@@ -117,7 +128,19 @@ No se que regresa ni como pedir ni por que método, imposible saber.
     `None *pero también creo*`
 
 * ### **Success Response**
-    `no se, hay error`
+    ```json
+    {
+        "3DGraph": <base64 image bytes>, 
+        "status": <"Success || Fail">, 
+        "graphData": {
+            "ecoa1": [<int Array>],
+            "mean1": <mean>,
+            "ecoa2": [<int Array>],
+            "mean2": <mean> 
+        }, 
+        "comment": <comment>
+    }
+    ```
 
 * ### **Success Response**
     `creo que no regresa ni verga, no tiene control de error`
