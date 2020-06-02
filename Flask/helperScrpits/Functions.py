@@ -26,8 +26,7 @@ def Train(idprofesor,idclass):
 
 	# Importing the dataset:
 	
-	pb_df = pd.read_csv("helperScrpits/newTrain.csv")
-	
+	pb_df = pd.read_csv("helperScrpits/dataset.csv")
 	pb_df.set_index('instr', inplace=True)#index intructor
 	tGrades = pb_df.loc[idprofesor]#idteacher
 	tGrades.set_index('class', inplace=True)#index class
@@ -83,49 +82,10 @@ def Train(idprofesor,idclass):
 	#Create a file model containing the training model
 	pickle.dump(regressor, open(filename,'wb'))
 	
-def TrainTree():
-	# Importing the dataset:
-	pb_df = pd.read_csv("train.csv")
-	
-	#this data set contains 28 questions which we divide into 3 sections, each section is referred to as a school year 
-	evaluacion1 = pb_df.iloc[:, 23:32].sum(axis=1)#get the sum of the elements in the column 23 to 32
-	pb_df.insert(1, "score3", evaluacion1, True) #add the column in the dataset 
-	evaluacion2 = pb_df.iloc[:, 14:23].sum(axis=1)#get the sum of the elements in the column 14 to 23
-	pb_df.insert(1, "score2", evaluacion2, True) #add the column in the dataset 
-	evaluacion3 = pb_df.iloc[:, 5:14].sum(axis=1)#get the sum of the elements in the column 5 to 14
-	pb_df.insert(1, "score1", evaluacion3, True)#add the column in the dataset 
 
-	X = pb_df.iloc[:, :3]#the x-axis in the multilinear regression will be the column [instr, score 1, score 2]
-	y = pb_df.iloc[:, 3]#the y-axis in the multilinear regression will be the column [score3] this will be the prediction 
-	
-	#Splitting the dataset into the Training and Test dataset
-	X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=0)#Split the dataset in 20% test and 80% train
-	
-	#Fit multiple Linear Regression model to our Train set
-	from sklearn.tree import DecisionTreeRegressor
-
-	
-	#Create an object called regressor in the LinearRegression class()
-	regressor = DecisionTreeRegressor()
-	
-	#Fit the linear regression model to the training set, We use the fit method the arguments of the fit method will be training sets
-	regressor.fit(X_train,y_train)
-	
-	#Create a file model containing the training model
-	pickle.dump(regressor, open('Models/modelTree.pkl','wb'))
-	
-	#Read the file model containing the training model
-	model = pickle.load(open('Models/modelTree.pkl','rb'))
-
-
-	#Predicting the Test set results:
-	# scores_0 = cross_val_score(model, X_train, y_train, cv=5)
-	# print("Accuracy: %0.2f (+/-%0.2f)" % (scores_0.mean(),scores_0.std()*2))
-	return True
-	
 def GraficaMean(idprofesor,idclass):
 	
-	pb_df = pd.read_csv("helperScrpits/newTrain.csv")
+	pb_df = pd.read_csv("helperScrpits/dataset.csv")
 	pb_df.set_index('instr', inplace=True)#index intructor
 	tGrades = pb_df.loc[idprofesor]#idteacher
 	tGrades.set_index('class', inplace=True)#index class
@@ -145,3 +105,24 @@ def getImage(path):
 	with open(path, mode='rb') as file:
 		img = file.read()
 	return base64.encodebytes(img).decode("utf-8")
+	
+def teacherIDChecker(teacherID):
+	if(type(teacherID) == str and len(teacherID) == 10):
+		return True
+	else:
+		return False
+
+def classIDChecker(classID):
+	if(type(classID) == str and len(classID) == 6):
+		return True
+	else:
+		return False
+
+def gradeChecker(grade):
+	if(type(grade) == float):
+		if(grade < 0 or grade > 100):
+			return False
+		else:
+			return True
+	else:
+		return False

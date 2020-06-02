@@ -33,11 +33,11 @@ Guia para correr el programa de manera rápida
 
 1. Clonar repositorio 
 ```bash 
-git clone https://github.com/emilianoabascal/AprendizajeAutomaticoPrimeraEvaluacion
+git clone https://github.com/esmemag96/AprendizajeAutomaticoEntregaFinal
 ``` 
 2. Ir hacia la carpeta
 ```bash 
-cd AprendizajeAutomaticoPrimeraEvaluacion
+cd AprendizajeAutomaticoEntregaFinal
 ``` 
 3. Ejecutar docker
 
