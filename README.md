@@ -78,7 +78,14 @@ función `GraficaMean()`:
 En esta función importamos el dataset y primero indexamos el campo del instructor, luego seleccionamos el maestro que vamos a analizar y también a la clase. Después obtenemos los valores de la ecoa 1 y la ecoa 2 y sacamos sus medias, regresamos el arreglo de la ecoa 1 y 2 con sus respectivas medias 
 
 ## Archivos Front End (Angular):
-### Frontend/
+### Frontend/src/app/main-components
+Carpeta donde se encuentran los componentes que integran la solución.
+### Frontend/src/app/model
+Carpeta donde se encuentran las interfaces de los modelos de datos utilizados.
+### Frontend/src/app/services
+Carpeta donde se encuentran las funciones que realizan las peticiones al Backend.
+### Frontend/src/app/environments
+Carpeta donde se definen los endpoints utilizados.
 
 ## Archivos Docker:
 ### Flask/Dockerfile: 
