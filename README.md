@@ -51,7 +51,7 @@ docker-compose build
 docker-compose up 
 ``` 
 
-6. Frontend: http://localhost:80 Backend: http://localhost:5000
+6. Frontend: http://localhost:80 Flask: http://localhost:5000
 
 7. Da click en el boton de train para entrenar el modelo con el dataset
 
