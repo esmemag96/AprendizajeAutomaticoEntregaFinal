@@ -70,10 +70,12 @@ Función `getGraphs()`: Se utiliza para regresar los valores a graficar sobre ca
 
 ### helperScripts/Functions.py: Este archivo se encarga de realizar el entrenamiento del modelo.
 
-función `Train()`: Importamos nuestro dataset (helperScripts/dataset.csv), este conjunto de datos contiene 28 preguntas que dividimos en 3 secciones, cada sección se conoce como un año escolar este se divide en el conjunto de datos de entrenamiento y Prueba.
+función `Train()`: En esta función importamos el dataset y primero indexamos el campo del instructor, luego seleccionamos el maestro que vamos a analizar y también a la clase. Tomamos los ejes x e y para la regresión lineal, nuestro eje X será Ecoa1 Ecoa2 y el eje Y será Ecoa3, después de que tomamos los elementos X y Y para hacer un modelo y predecir las calificaciones de Ecoas3 basadas en las primeras ecoas. El modelo debe ajustarse al modelo de regresión lineal al conjunto de entrenamiento y crear un archivo con model.pkl y el gráfico png que obtenemos de las predicciones.
 
 Se ajusta el modelo de regresión lineal múltiple a nuestro conjunto de entrenamiento. Utilizamos el método de ajuste junto con los argumentos del método de ajuste, los cuales serán conjuntos de entrenamiento y luego creamos un modelo de archivo que contiene el modelo de entrenamiento.
 
+función `GraficaMean()`: 
+En esta función importamos el dataset y primero indexamos el campo del instructor, luego seleccionamos el maestro que vamos a analizar y también a la clase. Después obtenemos los valores de la ecoa 1 y la ecoa 2 y sacamos sus medias, regresamos el arreglo de la ecoa 1 y 2 con sus respectivas medias 
 
 ## Archivos Front End (Angular):
 ### Frontend/
