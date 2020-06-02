@@ -5,14 +5,25 @@
       <form class="gradeForm" #thisSocoreForm="ngForm" [formGroup]="scoreForm" (ngSubmit)="submitScore()">
         <div class="form-group">
           <div
-            *ngIf="scoreForm.controls['id'].invalid && (scoreForm.controls['id'].dirty || scoreForm.controls['id'].touched)"
+            *ngIf="scoreForm.controls['teacherId'].invalid && (scoreForm.controls['teacherId'].dirty || scoreForm.controls['teacherId'].touched)"
             class="alert">
-            <div *ngIf="scoreForm.controls['id'].errors.required">
+            <div *ngIf="scoreForm.controls['teacherId'].errors.required">
               Teacher ID is required
             </div>
           </div>
-          <input formControlName="id" type="text" name="TeacherID" placeholder="Teacher ID *" id="TeacherID"
+          <input formControlName="teacherId" type="text" name="TeacherID" placeholder="Teacher ID *" id="TeacherID"
             required="required">
+
+            <div
+            *ngIf="scoreForm.controls['classId'].invalid && (scoreForm.controls['classId'].dirty || scoreForm.controls['classId'].touched)"
+            class="alert">
+            <div *ngIf="scoreForm.controls['classId'].errors.required">
+              Class ID is required
+            </div>
+          </div>
+          <input formControlName="classId" type="text" name="ClassId" placeholder="Class ID *" id="ClassId"
+            required="required">
+
           <div
             *ngIf="scoreForm.controls['grade1'].invalid && (scoreForm.controls['grade1'].dirty || scoreForm.controls['grade1'].touched)"
             class="alert">

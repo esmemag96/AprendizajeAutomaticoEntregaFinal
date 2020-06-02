@@ -42,7 +42,8 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
     this.scoreForm = this.formBuilder.group({
-      id: ['', Validators.required ],
+      teacherId: ['', Validators.required ],
+      classId: ['', Validators.required ],
       grade1: ['', Validators.required ],
       grade2: ['', Validators.required ],
     });
@@ -57,7 +58,8 @@ export class HomeComponent implements OnInit {
     this.isLoadingFinalScore = true;
 
     const score: Score = {
-      TeacherID: this.f.id.value,
+      TeacherID: this.f.teacherId.value,
+      ClassID: this.f.classId.value,
       grade1: this.f.grade1.value,
       grade2: this.f.grade2.value,
     };
