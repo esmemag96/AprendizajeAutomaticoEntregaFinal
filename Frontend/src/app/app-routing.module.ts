@@ -10,7 +10,7 @@ import { AnalizeTextComponent } from './main-components/analize-text/analize-tex
 import { NotFoundComponent } from './main-components/not-found/not-found.component';
 
 const routes: Routes = [
-  { path: '', component: HomeComponent },
+  { path: '', component: LoginComponent },
   { path: 'dashboard', component: DashboardComponent },
   { path: 'analize', component: AnalizeTextComponent },
   { path: 'ecoa', component: EcoaComponent },
