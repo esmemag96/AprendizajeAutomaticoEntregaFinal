@@ -25,6 +25,33 @@ El alcance final del proyecto es contar con la aplicación web terminada con las
 
 ![Diagrama](Architecture.jpg)
 
+# Tecnologías
+
+- Angular
+- Mongo Atlas
+- API (flask)
+- Azure functions (node.js)
+- Google Cloud Platform
+
+# Dataset
+
+Se utilizó un datasets en el cual se adquieren las calificaciones de los profesores en los últimos años, este se divide en la ecoa1, ecoas2, ecoas3. Los datos incluyen las asistencias de los alumnos y la dificultad de la materia.
+
+# API
+
+Se desarrollo la API de predicción con Flask gracias a las librerías para que contiene este lenguaje y a lo sencillo que es Python, la parte de bases de datos y análisis de sentimiento se realizaron con azure functions con el lenguaje de programación node.js
+
+# Dependencias
+
+- Flask
+- pandas
+- numpy
+- sklearn
+- matplotlib
+- Moongose
+- Node.js
+- Angular 
+
 # Prerrequisitos
 - `Docker`
 
@@ -78,7 +105,14 @@ función `GraficaMean()`:
 En esta función importamos el dataset y primero indexamos el campo del instructor, luego seleccionamos el maestro que vamos a analizar y también a la clase. Después obtenemos los valores de la ecoa 1 y la ecoa 2 y sacamos sus medias, regresamos el arreglo de la ecoa 1 y 2 con sus respectivas medias 
 
 ## Archivos Front End (Angular):
-### Frontend/
+### Frontend/src/app/main-components
+Carpeta donde se encuentran los componentes que integran la solución.
+### Frontend/src/app/model
+Carpeta donde se encuentran las interfaces de los modelos de datos utilizados.
+### Frontend/src/app/services
+Carpeta donde se encuentran las funciones que realizan las peticiones al Backend.
+### Frontend/src/app/environments
+Carpeta donde se definen los endpoints utilizados.
 
 ## Archivos Docker:
 ### Flask/Dockerfile: 
