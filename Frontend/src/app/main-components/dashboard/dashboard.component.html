@@ -28,16 +28,28 @@
             <h1 class="title">Ecoas</h1>
             <div *ngIf="professor?.classes?.length > 0" class="classes">
                 <div *ngFor="let class of professor?.classes">
-                    <div>
+                    <div class="header">
                         <h2 class="subtitle">{{class.className}} <span class="class-code">{{class.classCode}}</span>
                         </h2>
+                        <div class="nav">
+                            <button class="navBtn" *ngIf="professor?.classes.length > 1 && actualClass >= 1" (click)="changeEcoa(-1)">Back</button>
+                            <button class="navBtn" *ngIf="professor?.classes.length > 1 && actualClass < professor?.classes.length -1" (click)="changeEcoa(1)">Next</button>
+                        </div>
                     </div>
 
-                    <div *ngIf="ecoas">
+                    <div class="card-loading" *ngIf="loadingEcoa">
+                        <div class="loading"></div>
+                    </div>
+
+                    <div class="card-loading" *ngIf="ecoas?.length <= 0 && !loadingEcoa">
+                        <span class="no-result">No ECOAS to show</span>
+                    </div>
+
+                    <div *ngIf="ecoas && !loadingEcoa">
                         <div *ngFor="let ecoa of ecoas" class="questions">
                             <h4 class="title">Anonymous student</h4>
 
-                            <div class="question" *ngFor="let question of ecoa.questions; let i = index">
+                            <div class="question" *ngFor="let question of ecoa?.questions; let i = index">
                                 <h5 class="q" *ngIf="i==0">¿Qué opinas sobre las tareas?</h5>
                                 <h5 class="q" *ngIf="i==1">¿Qué opinas sobre el trabajo en clase?</h5>
                                 <h5 class="q" *ngIf="i==2">¿Qué opinas sobre los exámenes/proyectos?</h5>
@@ -66,13 +78,18 @@
                     </div>
                 </div>
             </div>
+
             <div *ngIf="!professor?.classes?.length > 0">
-                <span>no tiene ningana clase</span>
+                <span>No classes</span>
             </div>
         </div>
 
         <div class="card card-full">
             <h1 class="title">Predictions</h1>
+
+            <div class="card-loading" *ngIf="predictionsError">
+                <span class="no-result">No predictions to show</span>
+            </div>
         </div>
     </div>
 </section>

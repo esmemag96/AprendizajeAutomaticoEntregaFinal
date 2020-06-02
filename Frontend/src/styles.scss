@@ -362,19 +362,19 @@ body {
   min-width: 30%;
   left: 20px;
 
-  background-color: rgb(0, 0, 0,0.1);
+  background-color: rgb(0, 0, 0,0.2);
   border: 1px solid $medium;
   color: $medium;
 }
 
 .popup-red{
-  background-color: rgba(226, 27, 60, 0.2);
+  background-color: rgba(226, 27, 60, 0.35);
   border: 1px solid $tertiary;
   color: $tertiary;
 }
 
 .popup-green{
-  background-color: rgba(51, 153, 22, 0.2);
+  background-color: rgba(51, 153, 22, 0.35);
   border: 1px solid $secondary;
   color: $secondary;
 }
@@ -410,4 +410,11 @@ body {
   100% {
     transform: rotate(360deg);
   }
+}
+
+.card-loading{
+  display: flex;
+  padding: 50px 0px;
+  align-items: center;
+  justify-content: center;
 }

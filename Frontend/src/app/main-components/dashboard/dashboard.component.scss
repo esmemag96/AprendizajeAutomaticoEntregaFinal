@@ -47,6 +47,26 @@
         margin-bottom: 10px;
         padding: 10px;
 
+        .header{
+            display: flex;
+            justify-content: space-between;
+
+            .navBtn{
+                font-size: 0.8em;
+                background-color: $quaternary;
+                margin-right: 8px;
+                border-radius: 4px;
+                padding: 5px;
+                cursor: pointer;
+                color: $light;
+                font-weight: bold;
+
+                &:last-child{
+                    margin-right: 0px;
+                }
+            }
+        }
+
         &:last-child{
             border-bottom: none;
             margin-bottom: 0px;
@@ -65,7 +85,7 @@
     }
 
     .questions{
-        background-color: #f2f2f2;
+        background-color: #f4f4f4;
         border-radius: 5px;
         padding: 10px;
         padding-top: 20px;
@@ -121,4 +141,10 @@
             }
         }
     }
+}
+
+.no-result{
+    font-size: 2em;
+    color:$medium;
+    font-weight: bold;
 }
