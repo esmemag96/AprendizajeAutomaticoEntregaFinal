@@ -19,7 +19,7 @@ spec:
         - name: flask-backend
           image: gcr.io/aprendizaje-automatico/flask-backend
           ports:
-            - containerPort: 8080
+            - containerPort: 5000
           resources:
             requests:
               memory: 256Mi
