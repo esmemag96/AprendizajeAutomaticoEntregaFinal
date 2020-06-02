@@ -32,7 +32,7 @@ export class EcoaService {
             idProfessor: User.user,
             password: User.password
         };
-        return this.http.post(this.logStudent, getStudentRequest)
+        return this.http.post(this.logAdmin, getStudentRequest)
 
     }
     student(student: string): Observable<any> {

@@ -16,7 +16,7 @@ const routes: Routes = [
   { path: 'ecoa', component: EcoaComponent },
   { path: 'login', component: LoginComponent },
   { path: 'admin', component: LoginAdminComponent },
-  { path: '**', component: NotFoundComponent }
+  { path: '**', component: LoginComponent }
 ];
 
 @NgModule({
