@@ -54,6 +54,7 @@ Se desarrollo la API de predicción con Flask gracias a las librerías para que 
 
 # Prerrequisitos
 - `Docker`
+- `Node.js`
 
 # Quickstart
 Guia para correr el programa de manera rápida
