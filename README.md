@@ -133,7 +133,10 @@ Los datos que recolectamos del servicio son
                 Positive: 1.00  Negative: 0.00  Neutral: 0.00
 -	Document Key Phrases: cat,veterinarian
 
-Al finalizar guardamos un json con la recopilación de los sentimientos en mongo altas
+Al finalizar guardamos un json con la recopilación de los sentimientos en altas mongo
+
+para mas informacion sobre las functions y la base de datos [AzureFunctions]
+
 
 ## Archivos Front End (Angular):
 ### Frontend/src/app/main-components
