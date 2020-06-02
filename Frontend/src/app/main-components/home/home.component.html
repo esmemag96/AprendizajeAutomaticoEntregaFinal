@@ -11,7 +11,7 @@
               Teacher ID is required
             </div>
           </div>
-          <input formControlName="id" type="number" name="TeacherID" placeholder="Teacher ID *" id="TeacherID"
+          <input formControlName="id" type="text" name="TeacherID" placeholder="Teacher ID *" id="TeacherID"
             required="required">
           <div
             *ngIf="scoreForm.controls['grade1'].invalid && (scoreForm.controls['grade1'].dirty || scoreForm.controls['grade1'].touched)"

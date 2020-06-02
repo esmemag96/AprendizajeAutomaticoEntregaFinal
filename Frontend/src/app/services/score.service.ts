@@ -17,7 +17,6 @@ export class ScoreService {
 
   score(score: Score): Observable<any> {
     // this.messageService.add('Login.....');
-
     const predictRequest = {
       TeacherID: score.TeacherID,
       grade1: score.grade1,

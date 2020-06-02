@@ -411,3 +411,10 @@ body {
     transform: rotate(360deg);
   }
 }
+
+.card-loading{
+  display: flex;
+  padding: 50px 0px;
+  align-items: center;
+  justify-content: center;
+}

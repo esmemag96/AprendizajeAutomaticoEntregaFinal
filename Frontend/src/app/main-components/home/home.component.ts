@@ -84,8 +84,12 @@ export class HomeComponent implements OnInit {
       (err) => {
         this.isLoadingFinalScore = false;
         this.scoreError = true;
-        this.errorMessage = err.statusText;
-
+        if(err.status == 405){
+          this.errorMessage = "API Doesn't respond: Internal server error";
+        }else{
+          this.errorMessage = err.statusText;
+        }
+      
         setTimeout(() => {
           this.scoreError = false;
           if (!this.trainModelError) this.errorMessage = null;
@@ -114,7 +118,11 @@ export class HomeComponent implements OnInit {
       (err) => {
         this.isLoadingTrainModel = false;
         this.trainModelError = true;
-        this.errorMessage = err.statusText;
+        if(err.status == 405){
+          this.errorMessage = "API Doesn't respond: Internal server error";
+        }else{
+          this.errorMessage = err.statusText;
+        }
 
         setTimeout(() => {
           this.trainModelError = false;

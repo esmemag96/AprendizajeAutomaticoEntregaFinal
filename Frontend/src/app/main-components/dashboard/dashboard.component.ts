@@ -3,7 +3,6 @@ import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { EcoaService } from "../../services/ecoa.service";
 import { ProfessorService } from "../../services/professor.service";
 import { Professor } from "../../model/Professor";
-import { Ecoa } from "../../model/Ecoa";
 
 @Component({
   selector: "app-dashboard",
@@ -19,9 +18,11 @@ export class DashboardComponent implements OnInit {
   // Handle Loading
   loadingProfessor: boolean;
   loadingEcoa: boolean;
+  loadingPredictions:boolean;
   // Handle Error
   professorError:boolean;
   ecoaError:boolean;
+  predictionsError:boolean;
 
   constructor(
     private ecoaService: EcoaService,
@@ -31,9 +32,11 @@ export class DashboardComponent implements OnInit {
     this.actualClass = null
     this.loadingProfessor = false;
     this.loadingEcoa = false;
+    this.loadingPredictions = false;
 
     this.professorError=false;
     this.ecoaError=false;
+    this.predictionsError=true;
   }
 
   ngOnInit() {
@@ -67,8 +70,9 @@ export class DashboardComponent implements OnInit {
           Ecoa2: response.Ecoa2
         }
         this.actualClass = 0
-        console.log(this.professor);
         this.getEcoa();
+
+        console.log(this.professor);
       },
       (err) => {
         this.loadingProfessor = false;
@@ -84,7 +88,6 @@ export class DashboardComponent implements OnInit {
     if(this.professor){
       if(this.professor.classes.length > 0){
         this.loadingEcoa = true;
-
         this.ecoaService.getEcoa(this.professor._id, this.professor.classes[this.actualClass]._id).subscribe(
           (response) => {
             this.loadingEcoa = false;
@@ -102,6 +105,17 @@ export class DashboardComponent implements OnInit {
         
       }
     }
+  }
+
+  changeEcoa(cahngeN): void{
+    if(this.actualClass+cahngeN >= this.professor.classes.length || this.actualClass+cahngeN < 0) return;
+    this.actualClass += cahngeN;
+    this.ecoas = null;
+    this.getEcoa();
+  }
+
+  getPredictions(): void{
+    
   }
   
 }
