@@ -62,7 +62,7 @@ export class EcoaComponent implements OnInit {
   get f() {
     return this.scoreForm.controls;
   }
-  submitScore(profId: string, classId: string): void {
+  submitScore(classId: string, profId: string): void {
     this.questions.push(this.f.question1.value);
     this.questions.push(this.f.question2.value);
     this.questions.push(this.f.question3.value);
