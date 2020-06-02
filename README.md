@@ -105,24 +105,24 @@ Se ajusta el modelo de regresión lineal múltiple a nuestro conjunto de entrena
 función `GraficaMean()`: 
 En esta función importamos el dataset y primero indexamos el campo del instructor, luego seleccionamos el maestro que vamos a analizar y también a la clase. Después obtenemos los valores de la ecoa 1 y la ecoa 2 y sacamos sus medias, regresamos el arreglo de la ecoa 1 y 2 con sus respectivas medias 
 
-# Azure Functions 
+## Azure Functions 
 
 Este repositorio contiene el código para crear una aplicación web que está configurada por medio de los servicios de azure functions, esta esta aplicación hacemos uso de Node.js y mongoDB. Utilizamos los servicios de Azure para alojar nuestra aplicación; la CLI de Azure Tools para ejecutar y depurar localmente; y, por último, proporcionar comandos para implementar en Azure functions 
 
 En este proyecto, se implemento una aplicación que use MongoDB y Node.js. esta aplicación se hace cargo de poder acceder a la base de datos y responder un serie de request proporcionada por el client, la aplicación se encarga de recibir las ecoas generadas por el estudiante y después poder madarlas a analizar al la api de Azure cognitive services, este nos regresa un análisis con los score de cada pregunta y la keyphrases de las estas, esto se guardara en un base de datos realizadas en mongoDB y cada profesor podrá revisar los resultados de las ecoas 
 
-## Análisis de los sentimientos
+### Análisis de los sentimientos
 
 Utilizamos el análisis de sentimientos para averiguar qué piensan los alumnos de sus clases o profesores, mediante el análisis de texto sin procesar, busca una serie de pistas sobre sentimientos positivos o negativos. Esta API devuelve una puntuación de opinión entre 0 y 1 para cada documento, donde 1 es el más positivo. El modelos de análisis se entrenan previamente utilizando un extenso cuerpo de texto y tecnologías de lenguaje natural de Microsoft.
 
-## Extracción de frase clave
+### Extracción de frase clave
 Extraer automáticamente frases clave para identificar rápidamente los puntos principales.
 
-## Prerrequisitos
+### Prerrequisitos
 - Suscripción de Azure
 - Azure functions en Node.js.
 
-## Uso 
+### Uso 
 
 Una vez que tenga su suscripción de Azure, cree un recurso de Text Analytics en Azure Portal para obtener su clave y punto final. Después de que se implemente necesitará la clave y el punto final del recurso que cree para conectar su aplicación a la API de Text Analytics por medio de una azure function previamente creada, este ejemplo se encuentra en la function createEcoa. El servicio regresara un json con los scores generados por el texto y las palabras claves del análisis.
 
