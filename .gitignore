@@ -57,3 +57,4 @@ __pycache__/*
 *.pkl
 .DS_Store
 __pycache__/app.cpython-38.pyc
+.DS_Store
