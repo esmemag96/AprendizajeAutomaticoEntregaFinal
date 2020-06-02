@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { EcoaService } from "../../services/ecoa.service";
+import { LogedInUserService } from '../../services/loged-in-user.service';
 import { Ecoa } from "../../model/Ecoa";
 
 @Component({
@@ -25,7 +26,8 @@ export class EcoaComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private ecoaService: EcoaService
+    private ecoaService: EcoaService,
+    private logedInUserService: LogedInUserService,
 
   ) {
 
@@ -33,10 +35,10 @@ export class EcoaComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.ecoaService.student("A01023351").subscribe(
+    this.matricula = this.logedInUserService.getCurrentUser().idStudent
+    this.ecoaService.student(this.matricula).subscribe(
       (response) => {
         this.studentName = response.name;
-        this.matricula = response.idStudent;
         this.studentId = response._id;
         this.classes = response.classes;
         console.log(this.classes)

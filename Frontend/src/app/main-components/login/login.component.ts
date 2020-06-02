@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { EcoaService } from "../../services/ecoa.service";
+import { LogedInUserService } from '../../services/loged-in-user.service';
 import { User } from "../../model/User";
 import { Router } from '@angular/router';
 
@@ -12,13 +13,16 @@ import { Router } from '@angular/router';
 export class LoginComponent implements OnInit {
 
   loginForm: FormGroup;
-
   errorMessage: string;
+
+  scoreError: boolean;
+
   constructor(
     private formBuilder: FormBuilder,
     private ecoaService: EcoaService,
-    private router: Router
-  ) { }
+    private router: Router,
+    private logedInUserService: LogedInUserService,
+  ) { this.scoreError = false; }
 
   ngOnInit() {
     this.loginForm = this.formBuilder.group({
@@ -34,16 +38,19 @@ export class LoginComponent implements OnInit {
       user: this.f.user.value,
       password: this.f.password.value,
     };
-    console.log('====================================');
-    console.log(user);
-    console.log('====================================');
+
     this.ecoaService.loginStudent(user).subscribe(
       (response) => {
-        console.log(response)
+        this.logedInUserService.setUser({
+          object_id: response.object_id,
+          idStudent: response.idStudent,
+          studentName: response.studentName
+        });
         this.router.navigate(['ecoa']);
       },
       (err) => {
-        this.errorMessage = err.statusText;
+        this.scoreError = true;
+        this.errorMessage = err.error;
         console.log("HTTP Error", err);
       }
     );
