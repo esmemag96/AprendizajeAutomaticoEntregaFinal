@@ -12,10 +12,10 @@ export class EcoaService {
     private createEcoa = environment.createEcoaEndpoint;
     private logStudent = environment.loginStudentEndpoint;
     private logAdmin = environment.loginAdminEndpoint;
+    private getEcoaURL = environment.getEcoasbyIdProfesor;
 
     constructor(private http: HttpClient) {
     }
-
 
     loginStudent(User: User): Observable<any> {
 
@@ -54,5 +54,14 @@ export class EcoaService {
         };
         return this.http.post(this.createEcoa, createEcoaRequest)
 
+    }
+
+    getEcoa(idProfessor: string, idClass:string): Observable<any>{
+        let GetEcoasbyIdProfesorBody = {
+            idProfessor: idProfessor,
+            idClass: idClass
+        }
+
+        return this.http.post(this.getEcoaURL, GetEcoasbyIdProfesorBody);
     }
 }

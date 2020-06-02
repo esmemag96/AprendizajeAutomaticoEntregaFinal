@@ -9,7 +9,7 @@ En este pequeño proyecto, se implemento un modelo de regresión lineal  que pre
 
 # Diagrama de Arquitectura
 
-![Diagrama](arquitectura.png)
+![Diagrama](Architecture.jpg)
 
 # Prerrequisitos
 - `Docker`
@@ -25,19 +25,19 @@ git clone https://github.com/emilianoabascal/AprendizajeAutomaticoPrimeraEvaluac
 ```bash 
 cd AprendizajeAutomaticoPrimeraEvaluacion
 ``` 
-3. Abrir docker
+3. Ejecutar docker
 
-4. Run docker 
-```bash 
-docker-compose up 
-``` 
-5. Si se agregó un nuevo modulo de python a ´requirements.txt´:
+4. Si se agregó un nuevo modulo de python a ´requirements.txt´:
 ```bash 
 docker-compose build
 ``` 
-y repetir el paso 4.
 
-6. Buscar la dirreccion localhost o localhost:80 
+5. Run docker 
+```bash 
+docker-compose up 
+``` 
+
+6. Frontend: http://localhost:80 Backend: http://localhost:5000
 
 7. Da click en el boton de train para entrenar el modelo con el dataset
 
@@ -47,7 +47,7 @@ y repetir el paso 4.
 # Uso
 Esta es una explicación más detallada de los archivos y funciones principales que se usan.
 
-## Archivos Python
+## Archivos Python (Flasj)
 ### App.py: 
 Este archivo es la API que se encarga de manejar las solicitudes que vienen del Front End.
 
