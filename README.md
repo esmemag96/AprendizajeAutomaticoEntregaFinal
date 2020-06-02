@@ -1,11 +1,25 @@
-# Proyecto Aprendizaje automatico 
-Enrique Lira Martinez A01023351<br/>
-Emiliano Abascal Gurria A01023234<br/>
+# Teacher Grader
+Enrique Lira Martínez A01023351<br/>
+Emiliano Abascal Gurría A01023234<br/>
 Antony Adrian Morales Rosas A01019582<br/>
 Esmeralda Magdaleno Morales A01023086<br/>
 
-# Enunciado del problema
-En este pequeño proyecto, se implemento un modelo de regresión lineal  que predice el puntaje de un maestro individual al final del año. "score3" o la calificación final será nuestra etiqueta (salida) y el resto de las columnas serán nuestras características (entradas). Primero, exploraré los datos para ver si podemos comprender cuál es la historia detrás de los datos, este conjunto de datos contiene 28 preguntas que dividimos en 3 secciones, cada sección se conoce como un año escolar.
+# Resumen
+Este proyecto fue desarrollado para el curso de “Aprendizaje Automático” impartido en el Tecnológico de Monterrey, el cual consiste en una aplicación web desplegada en la nube, la cual permite a alumnos evaluar a sus profesores utilizando lenguaje natural, mientras que también permite a profesores visualizar sus evaluaciones y una predicción de su futuro desempeño basado en evaluaciones pasadas utilizando métodos de aprendizaje automático.
+
+# Planteamiento del problema
+Hoy en dia las evaluaciones realizadas por alumnos hacia los profesores se hace normalmente con cuestionarios que van por lo general del 1 al 10, siendo el 1 la peor calificación y 10 la mejor, sin embargo en diversas situaciones los alumnos realizan estas evaluaciones de una manera rápida y aleatoria, por lo que las evaluaciones no son necesariamente representativas del desempeño del profesor. 
+
+# Objetivo
+El objetivo de este proyecto es desarrollar una plataforma en la cual se puedan llevar a cabo evaluaciones de una forma más eficiente y honesta de parte de los alumnos, de igual forma que sea útil para los profesores no solo para ver sus calificaciones, sino que también para que puedan ver retroalimentación sobre sus clases.
+
+# Solución
+Para cumplir el anterior objetivo se planteo desarrollar una aplicacion web, la cual permitirá a los alumnos realizar las evaluaciones de sus profesores a través de unas cuantas preguntas abiertas, estas preguntas se analizarán para determinar cuál es la connotación emocional de una respuesta y determinar su puntaje, basado en estas evaluaciones se determinará también la calificación de una clase, y utilizando regresiones lineales, se determinará cuál sería el resultado de sus próximas evaluaciones.
+
+Para lograr lo anterior se implementaron dos APIs, una que realiza las predicciones de los profesores, y otra que se utiliza como backend para nuestra aplicación web, el cual se encarga de proveer de información al servicio de frontend. Tanto la API de predicciones como el frontend de nuestra app web, están desplegados en Kubernetes, la base de datos en Atlas por mongodb y el backend está desplegado en funciones “serverless”.
+
+# Alcance
+El alcance final del proyecto es contar con la aplicación web terminada con las capacidades para que los alumnos hagan evaluaciones sobre un curso y los profesores puedan visualizar sus calificaciones de manera apropiada así como las predicciones que los pueden ayudar a mejorar sus métodos de enseñanza.
 
 # Diagrama de Arquitectura
 
@@ -47,7 +61,7 @@ docker-compose up
 # Uso
 Esta es una explicación más detallada de los archivos y funciones principales que se usan.
 
-## Archivos Python (Flasj)
+## Archivos Python (Flask)
 ### App.py: 
 Este archivo es la API que se encarga de manejar las solicitudes que vienen del Front End.
 
@@ -90,5 +104,3 @@ Archivo Docker-Compose para levantar todos los contenedores necesarios (Flask, N
 - Login de profesores para poder acceder al dashboard de profesores
 - Dashboard de profesores para ver las evaluaciones realizadas por los alumnos, asi como una predicción sobre cual es su futura calificación dependiendo de su actual evaluación.
 - Capacidad de que los profesores puedan ver sus evaluaciones y palabras clave de cada una para poder recibir retroalimentación más efectiva.
-
-
