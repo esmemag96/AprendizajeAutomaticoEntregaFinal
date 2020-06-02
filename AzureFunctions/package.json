@@ -1,0 +1,20 @@
+{
+  "name": "profesoresapi",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "func start",
+    "test": "echo \"No tests yet...\""
+  },
+  "dependencies": {
+    "@azure/ai-text-analytics": "^1.0.0-preview.4",
+    "axios": "^0.19.2",
+    "bcrypt": "^4.0.1",
+    "bcryptjs": "^2.4.3",
+    "mongoose": "^5.9.15"
+  },
+  "devDependencies": {},
+  "main": "",
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}
