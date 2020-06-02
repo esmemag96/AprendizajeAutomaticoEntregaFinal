@@ -47,7 +47,7 @@ export class HomeComponent implements OnInit {
       grade1: ['', Validators.required ],
       grade2: ['', Validators.required ],
     });
-    this.getGraphs(-1);
+    //this.getGraphs(-1);
   }
 
   get f() {
@@ -61,16 +61,17 @@ export class HomeComponent implements OnInit {
       TeacherID: this.f.teacherId.value,
       ClassID: this.f.classId.value,
       grade1: this.f.grade1.value,
-      grade2: this.f.grade2.value,
+      grade2: this.f.grade2.value
     };
     const graph: Graph = {
-      getGraphs: "true",
-	    teacherID: this.f.id.value,
+      teacherID: this.f.teacherId.value,
+      classID: this.f.classId.value
     };
     this.scoreService.score(score).subscribe(
       (predictResponse) => {
+        console.log(predictResponse)
         this.isLoadingFinalScore = false;
-        this.result = predictResponse.prediction;
+        this.result = predictResponse.predictionResult;
         this.result = Math.round(Number(this.result) * 100)/100;
 
         if(this.result >= 70){
@@ -102,7 +103,7 @@ export class HomeComponent implements OnInit {
     // this.scoreService.graph(graph).subscribe(graphResponse => {
     //   console.log(graphResponse);
     // });
-    this.getGraphs(graph.teacherID);
+    this.getGraphs(graph);
   }
   trainModel(): void {
     this.isLoadingTrainModel = true;
@@ -133,13 +134,9 @@ export class HomeComponent implements OnInit {
         console.log("HTTP Error", err);
       }
     );
-    this.getGraphs(-1);
+    //this.getGraphs(gra);
   }
-  getGraphs(tID: number) {
-    const graph: Graph = {
-      getGraphs: "true",
-	    teacherID: tID,
-    };
+  getGraphs(graph: Graph) {
     this.scoreService.graph(graph).subscribe(graphResponse => {
     this.imagePath = this._sanitizer.bypassSecurityTrustResourceUrl('data:image/jpg;base64,' 
                  + graphResponse.ImageBytes);

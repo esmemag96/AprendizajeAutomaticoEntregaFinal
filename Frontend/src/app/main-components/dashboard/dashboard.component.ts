@@ -1,8 +1,10 @@
 import { Component, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { EcoaService } from "../../services/ecoa.service";
+import { ScoreService } from "../../services/score.service";
 import { ProfessorService } from "../../services/professor.service";
 import { Professor } from "../../model/Professor";
+import { Score } from "../../model/Score";
 
 @Component({
   selector: "app-dashboard",
@@ -13,6 +15,8 @@ export class DashboardComponent implements OnInit {
   professor: Professor;
   actualClass: number;
   ecoas: Array<any>;
+  score: Score;
+  finalScore: number;
 
   searchForm: FormGroup;
   // Handle Loading
@@ -24,9 +28,12 @@ export class DashboardComponent implements OnInit {
   ecoaError:boolean;
   predictionsError:boolean;
 
+  predictionColor: string;
+
   constructor(
     private ecoaService: EcoaService,
     private professorService:ProfessorService,
+    private scoreService: ScoreService,
     private formBuilder: FormBuilder
   ) {
     this.actualClass = null
@@ -36,7 +43,7 @@ export class DashboardComponent implements OnInit {
 
     this.professorError=false;
     this.ecoaError=false;
-    this.predictionsError=true;
+    this.predictionsError=false;
   }
 
   ngOnInit() {
@@ -69,8 +76,18 @@ export class DashboardComponent implements OnInit {
           Ecoa1: response.Ecoa1,
           Ecoa2: response.Ecoa2
         }
+
         this.actualClass = 0
+
+        this.score = {
+          TeacherID: response.idProfessor,
+          ClassID: response.classes[this.actualClass].classCode,
+          grade1: response.Ecoa1 , 
+          grade2: response.Ecoa2
+        }
+
         this.getEcoa();
+        this.getPrediction(this.score);
 
         console.log(this.professor);
       },
@@ -114,8 +131,31 @@ export class DashboardComponent implements OnInit {
     this.getEcoa();
   }
 
-  getPredictions(): void{
-    
+  getPrediction(score:Score): void{
+    this.loadingPredictions = true;
+
+    this.scoreService.score(score).subscribe(
+      (response) => {
+        this.loadingPredictions = false;
+        console.log(response);
+        this.finalScore = response.predictionResult;
+        this.finalScore = Math.round(Number(this.finalScore) * 100)/100;
+
+        if(this.finalScore >= 70){
+          this.predictionColor = "rgb(51, 153, 22)";
+        }else if(this.finalScore < 70 && this.finalScore >= 40){
+          this.predictionColor = "rgb(254, 166, 2)";
+        }else{
+          this.predictionColor = "rgb(226, 27, 60)";
+        }
+      },
+      (err) => {
+        this.loadingPredictions = false;
+        this.predictionsError = true;
+        //this.ecoa = null;
+        console.log("HTTP Error", err);
+      }
+    );
   }
   
 }

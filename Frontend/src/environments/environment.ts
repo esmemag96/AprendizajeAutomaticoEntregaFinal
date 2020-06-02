@@ -5,17 +5,20 @@
 export const environment = {
   production: false,
 
-  getStudentEndpoint: "http://localhost:7071/api/GetUser",
-  createEcoaEndpoint: "http://localhost:7071/api/Sentiments",
-  loginStudentEndpoint: "http://localhost:7071/api/studentLogin",
-  loginAdminEndpoint: "http://localhost:7071/api/professorLogin",
-  getEcoasbyIdProfesor: "http://localhost:7071/api/GetEcoasbyIdProfesor",
-  getProfessor: "http://localhost:7071/api/GetProfesor",
+  // Functions Azure
+  getStudentEndpoint: "https://profesoresaprendizajefinal.azurewebsites.net/api/GetUser?code=caBVrHXhCeg2cQzRogA8C3jXCbop74SgZFPgkjGJiJ5JOoxyjBa03w==",
+  createEcoaEndpoint: "https://profesoresaprendizajefinal.azurewebsites.net/api/CreateEcoa?code=pffHHCyjuhR/wVLZUW4XhU9hya1nxAl0j6/9EgVqmA1DU/dRwGt6Yw==",
+  loginStudentEndpoint: "https://profesoresaprendizajefinal.azurewebsites.net/api/studentLogIn?code=KxPjgUN38ZH08SFNib7wgAJ/pHOsBH1vMYdHqs4a6og5SroZta4SyQ==",
+  loginAdminEndpoint: "https://profesoresaprendizajefinal.azurewebsites.net/api/professorLogin?code=MCwUHR0a2AN3rTmsaodXtyzFVa6zPIkLS9qRIHDFpEdZPf6T30U3lQ==",
+  getEcoasbyIdProfesor: "https://profesoresaprendizajefinal.azurewebsites.net/api/GetEcoasbyIdProfesor?code=/8PxXtmVoyCHJ8qUVSC2RXtQOcmM7axNt9uSgooUqvaiQASGa4cesA==",
+  getProfessor: "https://profesoresaprendizajefinal.azurewebsites.net/api/GetProfesor?code=aCll369IB7qO7akgDe8vRM7x0ylPZjro1cLgKo31D/5kkhLrVSGyyw==",
   
-  scoreApiEndpoint: "http://localhost:5000/predict",
-  trainApiEndpoint: "http://localhost:5000/train",
-  textApiEndpoint:  "http://localhost:5000/sentiment-analysis",
-  graphApiEndpoint:  "http://localhost:5000/getGraphs"
+
+  // Functions Flask
+  scoreApiEndpoint: "http://35.238.158.212:5000/predict",
+  trainApiEndpoint: "http://35.238.158.212:5000/train",
+  textApiEndpoint:  "http://35.238.158.212:5000/sentiment-analysis",
+  graphApiEndpoint:  "http://35.238.158.212:5000/getGraphs"
 
 };
 
