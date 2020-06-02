@@ -5,7 +5,8 @@
             <form #thisTextForm="ngForm" [formGroup]="textForm" (ngSubmit)="submitText()">
                 <textarea formControlName="input" name="" id="" cols="30" rows="10"></textarea>
                 <button class="btn btn-primary" [disabled]="!textForm.valid">
-                    <span *ngIf="!isLoadingAnalisis">Confirm</span> <span *ngIf="isLoadingAnalisis">Loading...</span>
+                    <span *ngIf="!isLoadingAnalisis">Confirm</span>
+                    <span *ngIf="isLoadingAnalisis">Loading...</span>
                 </button>
             </form>
         </div>
@@ -36,3 +37,7 @@
         </div>
     </div>
 </section>
+
+<div class="popup popup-red" *ngIf="analisisError">
+    <span>{{errorMessage}}</span>
+</div>
