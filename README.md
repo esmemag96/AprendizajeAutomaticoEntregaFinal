@@ -57,50 +57,41 @@ docker-compose up
 
 8. Ingresa los valores a predecir 
 
-
 # Uso
 Esta es una explicación más detallada de los archivos y funciones principales que se usan.
 
 ## Archivos Python (Flask)
 ### App.py: 
-Este archivo es la API que se encarga de manejar las solicitudes que vienen del Front End.
+Este archivo es la API que se encarga de realizar las predicciones sobre las calificaciones futuras de los profesores.
 
-Función `home()`:  Se utiliza para que la API envíe el archivo index.html.
+Función `predict()`: Se utiliza para predecir los valores, la función se llama cuando se hace una solicitud HTTP de tipo GET, en la cual deben estar los parámetros ‘TeacherID’, ‘ClassID’, ‘grade1’ y ‘grade2’, la funcion se encarga posteriormente a realizar la predicción y enviar el resultado al front end.
 
-Función `predict()`: Se utiliza para predecir los valores, la función se llama cuando se hace una solicitud HTTP que recive un JSON con la infomración introducida en el Front End, realiza las predicciones necesarias y regresa un resultado al cliente en un JSON.
+Función `getGraphs()`: Se utiliza para regresar los valores a graficar sobre cada entrenamiento que se hace,  la función se llama cuando se hace una solicitud HTTP de tipo GET, en la cual deben estar los parámetros ‘TeacherID’ y ‘ClassID’, regresa una imagen y datos para graficar.
 
-Función `trainModel()`: Se utiliza para volver a entrenar el modelo, la función se llama cuando se hace una solicitud HTTP que recive un JSON con la infomración introducida en el Front End, realiza el entrenamiento y regresa una respuesta booleana para avisar al cliente si el entrenamiento fue exitoso o no.
+### helperScripts/Functions.py: Este archivo se encarga de realizar el entrenamiento del modelo.
 
-### Train.py: Este archivo se encarga de realizar el entrenamiento del modelo.
-
-función `Train()`: Importamos nuestro dataset, este conjunto de datos contiene 28 preguntas que dividimos en 3 secciones, cada sección se conoce como un año escolar este se divide en el conjunto de datos de entrenamiento y Prueba
+función `Train()`: Importamos nuestro dataset (helperScripts/dataset.csv), este conjunto de datos contiene 28 preguntas que dividimos en 3 secciones, cada sección se conoce como un año escolar este se divide en el conjunto de datos de entrenamiento y Prueba.
 
 Se ajusta el modelo de regresión lineal múltiple a nuestro conjunto de entrenamiento. Utilizamos el método de ajuste junto con los argumentos del método de ajuste, los cuales serán conjuntos de entrenamiento y luego creamos un modelo de archivo que contiene el modelo de entrenamiento.
+
 
 ## Archivos Front End (Angular):
 ### Frontend/
 
 ## Archivos Docker:
-### Dockerfile-nginx: 
-Dockerfile para el contenedor de NGINX.
-### Dockerfile-flask: 
+### Flask/Dockerfile: 
 Dockerfile para el contenedor de FLASK.
-### Dockerfile-angular: 
+### Frontend/Dockerfile: 
 Dockerfile para el contenedor de Angular.
-### app.conf: 
-Archivo de configuración para el contenedor de NGINX, usado en Dockerfile-nginx.
-### app.ini: 
-Archivo de configuración para el contenedor de FLASK, usado en Dockerfile-flask.
-### requirements.txt: 
+### Flask/requirements.txt: 
 Archivo que se utiliza para cargar las dependencias del contenedor de flask, por ejemplo ´numpy´.
 ### docker-compose.yml: 
-Archivo Docker-Compose para levantar todos los contenedores necesarios (Flask, NGINX).
+Archivo Docker-Compose para levantar todos los contenedores necesarios (Flask, Angular).
 
-# Arquitectura
-
-# Versión Final
-## La versión final consistirá en lo siguiente:
-- Login alumnos, para poder hacer las evaluaciones de sus clases.
-- Login de profesores para poder acceder al dashboard de profesores
-- Dashboard de profesores para ver las evaluaciones realizadas por los alumnos, asi como una predicción sobre cual es su futura calificación dependiendo de su actual evaluación.
-- Capacidad de que los profesores puedan ver sus evaluaciones y palabras clave de cada una para poder recibir retroalimentación más efectiva.
+## Archivos Kubernetes:
+### Flask/flask-backend-deployment.yaml
+Archivo utilizado para desplegar contenedor de Flask en Kubernetes.
+### Frontend/angular-frontend-deployment.yaml
+Archivo utilizado para desplegar contenedor de Frontend en Kubernetes.
+### Frontend/angular-frontend-claim0-persistentvolumeclaim.yaml
+Archivo utilizado para desplegar volumen persistente para Frontend en Kubernetes.
