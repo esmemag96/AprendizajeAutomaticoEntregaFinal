@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Score } from '../model/Score';
 import { Graph } from '../model/Graph';
 import { environment } from './../../environments/environment';
@@ -16,15 +16,10 @@ export class ScoreService {
   }
 
   score(score: Score): Observable<any> {
-    // this.messageService.add('Login.....');
-    const predictRequest:Score = {
-      TeacherID: score.TeacherID,
-      ClassID: score.ClassID,
-      grade1: score.grade1,
-      grade2: score.grade2
-    };
-    return this.http.post(this.predictUrl, predictRequest)
-
+    const predString = "TeacherID=" + score.TeacherID + "&ClassID="+ score.ClassID +"&grade1="+score.grade1+"&grade2="+score.grade2
+    const opts = { params: new HttpParams({fromString: predString}) };
+    console.log(opts)
+    return this.http.get(this.predictUrl, opts)
   }
 
   train(): Observable<any> {

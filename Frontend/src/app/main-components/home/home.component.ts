@@ -61,16 +61,17 @@ export class HomeComponent implements OnInit {
       TeacherID: this.f.teacherId.value,
       ClassID: this.f.classId.value,
       grade1: this.f.grade1.value,
-      grade2: this.f.grade2.value,
+      grade2: this.f.grade2.value
     };
     const graph: Graph = {
       getGraphs: "true",
-	    teacherID: this.f.id.value,
+	    teacherID: this.f.teacherId.value,
     };
     this.scoreService.score(score).subscribe(
       (predictResponse) => {
+        console.log(predictResponse)
         this.isLoadingFinalScore = false;
-        this.result = predictResponse.prediction;
+        this.result = predictResponse.predictionResult;
         this.result = Math.round(Number(this.result) * 100)/100;
 
         if(this.result >= 70){
