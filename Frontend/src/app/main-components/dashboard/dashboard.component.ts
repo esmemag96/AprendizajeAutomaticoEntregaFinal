@@ -1,8 +1,10 @@
 import { Component, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { EcoaService } from "../../services/ecoa.service";
+import { ScoreService } from "../../services/score.service";
 import { ProfessorService } from "../../services/professor.service";
 import { Professor } from "../../model/Professor";
+import { Score } from "../../model/Score";
 
 @Component({
   selector: "app-dashboard",
@@ -13,6 +15,7 @@ export class DashboardComponent implements OnInit {
   professor: Professor;
   actualClass: number;
   ecoas: Array<any>;
+  score: Score;
 
   searchForm: FormGroup;
   // Handle Loading
@@ -27,6 +30,7 @@ export class DashboardComponent implements OnInit {
   constructor(
     private ecoaService: EcoaService,
     private professorService:ProfessorService,
+    private scoreService: ScoreService,
     private formBuilder: FormBuilder
   ) {
     this.actualClass = null
@@ -36,7 +40,7 @@ export class DashboardComponent implements OnInit {
 
     this.professorError=false;
     this.ecoaError=false;
-    this.predictionsError=true;
+    this.predictionsError=false;
   }
 
   ngOnInit() {
@@ -112,10 +116,6 @@ export class DashboardComponent implements OnInit {
     this.actualClass += cahngeN;
     this.ecoas = null;
     this.getEcoa();
-  }
-
-  getPredictions(): void{
-    
   }
   
 }

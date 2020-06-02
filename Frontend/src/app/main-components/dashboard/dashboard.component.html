@@ -90,6 +90,11 @@
             <div class="card-loading" *ngIf="predictionsError">
                 <span class="no-result">No predictions to show</span>
             </div>
+
+            <div class="predictions" *ngIf="!predictionsError">
+                <h2>Ecoa 1: <span>{{professor.Ecoa1}}</span></h2>
+                <h2>Ecoa 2: <span>{{professor.Ecoa2}}</span></h2>
+            </div>
         </div>
     </div>
 </section>
