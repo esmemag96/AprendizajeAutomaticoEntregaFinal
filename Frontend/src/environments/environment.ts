@@ -18,7 +18,7 @@ export const environment = {
   scoreApiEndpoint: "http://35.238.158.212:5000/predict",
   trainApiEndpoint: "http://35.238.158.212:5000/train",
   textApiEndpoint:  "http://35.238.158.212:5000/sentiment-analysis",
-  graphApiEndpoint:  "http://35.238.158.212:5000/getGraphs"
+  graphApiEndpoint: "http://35.238.158.212:5000/getGraphs"
 
 };
 

@@ -2,18 +2,24 @@ apiVersion: v1
 kind: Service
 metadata:
   annotations:
-    kompose.cmd: kompose convert
-    kompose.version: 1.21.0 ()
-  creationTimestamp: null
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"v1","kind":"Service","metadata":{"annotations":{},"labels":{"io.kompose.service":"angular-frontend"},"name":"angular-frontend","namespace":"default","resourceVersion":"90821","selfLink":"/api/v1/namespaces/default/services/angular-frontend"},"spec":{"externalTrafficPolicy":"Cluster","ports":[{"nodePort":30457,"port":80,"protocol":"TCP","targetPort":4200}],"selector":{"io.kompose.service":"angular-frontend"},"sessionAffinity":"None","type":"LoadBalancer"}}
   labels:
     io.kompose.service: angular-frontend
   name: angular-frontend
+  namespace: default
+  resourceVersion: "93989"
+  selfLink: /api/v1/namespaces/default/services/angular-frontend
+  uid: 47f2c99e-a528-11ea-987d-42010a800169
 spec:
+  clusterIP: 10.0.4.218
+  externalTrafficPolicy: Cluster
   ports:
-  - name: "80"
+  - nodePort: 30457
     port: 80
+    protocol: TCP
     targetPort: 4200
   selector:
     io.kompose.service: angular-frontend
-status:
-  loadBalancer: {}
+  sessionAffinity: None
+  type: LoadBalancer

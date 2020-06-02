@@ -9,7 +9,7 @@ Run `npm install`
 ## Compilar el programa
 
 Run `ng serve`
-Navegar al `http://localhost:4200/` para ver la aplicación
+Navegar al `http://localhost/` para ver la aplicación
 
 
 ## Estructura del proyecto
