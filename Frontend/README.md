@@ -2,26 +2,32 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.19.
 
-## Development server
+## Instalar las dependencias
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Run `npm install`
 
-## Code scaffolding
+## Compilar el programa
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Run `ng serve`
+Navegar al `http://localhost:4200/` para ver la aplicación
 
-## Build
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+## Estructura del proyecto
 
-## Running unit tests
+### Componentes
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Dashboard: Componente donde se procesarán los datos de las ecoas del profesor 
+Ecoa: Portal donde el alumno podrá contestar las preguntas de cada profesor y por materia
+Login: Portal de login de alumnos
+Login-Admin: Portal de login de profesores
 
-## Running end-to-end tests
+### Servicios
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+Se utilizan varios archivos donde se realizan las peticiones al servidor y se conectan a los componentes
 
-## Further help
+### Environments
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+En este archivo se tienen los endpoints para la conexión a los servicios del Backend
+
+
+
