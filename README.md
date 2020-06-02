@@ -27,11 +27,11 @@ El alcance final del proyecto es contar con la aplicación web terminada con las
 
 # Tecnologías
 
-Angular
-Mongo Atlas
-API (flask)
-Azure functions (node.js)
-Google Cloud Platform
+- Angular
+- Mongo Atlas
+- API (flask)
+- Azure functions (node.js)
+- Google Cloud Platform
 
 # Dataset
 
@@ -43,14 +43,14 @@ Se desarrollo la API de predicción con Flask gracias a las librerías para que 
 
 # Dependencias
 
--Flask
--pandas
--numpy
--sklearn
--matplotlib
--Moongose
--Node.js
--Angular 
+- Flask
+- pandas
+- numpy
+- sklearn
+- matplotlib
+- Moongose
+- Node.js
+- Angular 
 
 # Prerrequisitos
 - `Docker`
