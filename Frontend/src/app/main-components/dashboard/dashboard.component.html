@@ -29,28 +29,39 @@
             <div *ngIf="professor?.classes?.length > 0" class="classes">
                 <div *ngFor="let class of professor?.classes">
                     <div>
-                        <h2 class="subtitle">{{class.className}} <span class="class-code">{{class.classCode}}</span> </h2>
+                        <h2 class="subtitle">{{class.className}} <span class="class-code">{{class.classCode}}</span>
+                        </h2>
                     </div>
 
-                    <div class="questions">
-                        <h4 class="title">Anonymous student</h4>
-                        <div class="question">
-                            <h5 class="q">¿Qué opinas sobre las tareas?</h5>
-                            <div class="response">
-                                <span>sentimiento:</span> <span>😃</span>
+                    <div *ngIf="ecoas">
+                        <div *ngFor="let ecoa of ecoas" class="questions">
+                            <h4 class="title">Anonymous student</h4>
+
+                            <div class="question" *ngFor="let question of ecoa.questions; let i = index">
+                                <h5 class="q" *ngIf="i==0">¿Qué opinas sobre las tareas?</h5>
+                                <h5 class="q" *ngIf="i==1">¿Qué opinas sobre el trabajo en clase?</h5>
+                                <h5 class="q" *ngIf="i==2">¿Qué opinas sobre los exámenes/proyectos?</h5>
+                                <h5 class="q" *ngIf="i==3">¿Que opinas sobre la evaluación en clase?</h5>
+                                <h5 class="q" *ngIf="i==4">¿Qué opinas sobre la clase en general?</h5>
+
+                                <div class="answer">
+                                    <p class="text">{{question?.answers}}</p>
+                                    <div class="extra">
+                                        <div class="sentiment"><span class="title">Sentimiento General: </span>
+                                            <span *ngIf="question.sentiment == 'negative'">😡</span>
+                                            <span *ngIf="question.sentiment == 'mixed'">😐</span>
+                                            <span *ngIf="question.sentiment == 'positive'">😃</span>
+                                        </div>
+                                        <div class="box"><span>Negativo: {{question.confidenceScores.negative}}</span>
+                                        </div>
+                                        <div class="box"><span>Neutral: {{question.confidenceScores.neutral}}</span>
+                                        </div>
+                                        <div class="box"><span>Positivo: {{question.confidenceScores.positive}}</span>
+                                        </div>
+                                    </div>
+
+                                </div>
                             </div>
-                        </div>
-                        <div class="question">
-                            <h5 class="q">¿Qué opinas sobre el trabajo en clase?</h5>
-                        </div>
-                        <div class="question">
-                            <h5 class="q">¿Qué opinas sobre los exámenes/proyectos?</h5>
-                        </div>
-                        <div class="question"> 
-                            <h5 class="q">¿Que opinas sobre la evaluación en clase?</h5>
-                        </div>
-                        <div class="question">
-                            <h5 class="q">¿Qué opinas sobre la clase en general?</h5>
                         </div>
                     </div>
                 </div>

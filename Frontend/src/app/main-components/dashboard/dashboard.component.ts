@@ -13,7 +13,7 @@ import { Ecoa } from "../../model/Ecoa";
 export class DashboardComponent implements OnInit {
   professor: Professor;
   actualClass: number;
-  ecoa: Ecoa;
+  ecoas: Array<any>;
 
   searchForm: FormGroup;
   // Handle Loading
@@ -88,19 +88,14 @@ export class DashboardComponent implements OnInit {
         this.ecoaService.getEcoa(this.professor._id, this.professor.classes[this.actualClass]._id).subscribe(
           (response) => {
             this.loadingEcoa = false;
-            console.log(response);
-
-            this.ecoa = {
-              questions: response.questions,
-              idStudent:"API DOESN'T RETURN THIS VALUE",
-              idProfessor:"API DOESN'T RETURN THIS VALUE",
-              idClass:response.idClass,
-            }
+            //console.log(response);
+            this.ecoas = response;
+            console.log(this.ecoas);
           },
           (err) => {
             this.loadingEcoa = false;
             this.ecoaError = true;
-            this.ecoa = null;
+            //this.ecoa = null;
             console.log("HTTP Error", err);
           }
         );
