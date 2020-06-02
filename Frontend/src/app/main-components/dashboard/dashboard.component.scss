@@ -150,7 +150,17 @@
 }
 
 .predictions{
-    span{
+    font-weight: bold;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .score {
+        font-size: 3em;
+        margin-bottom: 10px;
+        padding-bottom: 10px;
+        border-bottom: 1px solid $medium;
         color: $secondary;
-    }
+      }
 }

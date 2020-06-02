@@ -87,13 +87,17 @@
         <div class="card card-full">
             <h1 class="title">Predictions</h1>
 
-            <div class="card-loading" *ngIf="predictionsError">
+            <div class="card-loading" *ngIf="loadingPredictions">
+                <div class="loading"></div>
+            </div>
+
+            <div class="card-loading" *ngIf="predictionsError && !loadingPredictions">
                 <span class="no-result">No predictions to show</span>
             </div>
 
-            <div class="predictions" *ngIf="!predictionsError">
-                <h2>Ecoa 1: <span>{{professor.Ecoa1}}</span></h2>
-                <h2>Ecoa 2: <span>{{professor.Ecoa2}}</span></h2>
+            <div class="predictions" *ngIf="!predictionsError && !loadingPredictions">
+                <span class="score" [style.color]="predictionColor">{{finalScore}}</span>
+                <span>Prediction Score</span>
             </div>
         </div>
     </div>

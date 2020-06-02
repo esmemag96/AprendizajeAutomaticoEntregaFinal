@@ -16,9 +16,10 @@ export class ScoreService {
   }
 
   score(score: Score): Observable<any> {
+    //console.log(score)
     const predString = "TeacherID=" + score.TeacherID + "&ClassID="+ score.ClassID +"&grade1="+score.grade1+"&grade2="+score.grade2
     const opts = { params: new HttpParams({fromString: predString}) };
-    console.log(opts)
+    console.log(predString)
     return this.http.get(this.predictUrl, opts)
   }
 
