@@ -135,7 +135,7 @@ Los datos que recolectamos del servicio son
 
 Al finalizar guardamos un json con la recopilación de los sentimientos en altas mongo
 
-para mas informacion sobre las functions y la base de datos [AzureFunctions]
+para mas informacion sobre las functions y la base de datos [AzureFunctions](AzureFunctions)
 
 
 ## Archivos Front End (Angular):
