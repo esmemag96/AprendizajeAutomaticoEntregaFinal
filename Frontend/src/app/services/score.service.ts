@@ -30,10 +30,8 @@ export class ScoreService {
   }
 
   graph(graph: Graph): Observable<any> {
-    const graphRequest = {
-      getGraphs: graph.getGraphs,
-      teacherID: graph.teacherID,
-    };
-    return this.http.post(this.graphUrl, graphRequest)
+    const predString = "TeacherID=" + graph.teacherID + "&ClassID="+ graph.classID
+    const opts = { params: new HttpParams({fromString: predString}) };
+    return this.http.get(this.graphUrl, opts)
   }
 }

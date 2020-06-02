@@ -1,4 +1,4 @@
 export interface Graph {
-    getGraphs: string,
-	teacherID: number
+    teacherID: string,
+    classID: string
 }
