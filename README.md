@@ -25,6 +25,33 @@ El alcance final del proyecto es contar con la aplicación web terminada con las
 
 ![Diagrama](Architecture.jpg)
 
+# Tecnologías
+
+Angular
+Mongo Atlas
+API (flask)
+Azure functions (node.js)
+Google Cloud Platform
+
+# Dataset
+
+Se utilizó un datasets en el cual se adquieren las calificaciones de los profesores en los últimos años, este se divide en la ecoa1, ecoas2, ecoas3. Los datos incluyen las asistencias de los alumnos y la dificultad de la materia.
+
+# API
+
+Se desarrollo la API de predicción con Flask gracias a las librerías para que contiene este lenguaje y a lo sencillo que es Python, la parte de bases de datos y análisis de sentimiento se realizaron con azure functions con el lenguaje de programación node.js
+
+# Dependencias
+
+-Flask
+-pandas
+-numpy
+-sklearn
+-matplotlib
+-Moongose
+-Node.js
+-Angular 
+
 # Prerrequisitos
 - `Docker`
 
