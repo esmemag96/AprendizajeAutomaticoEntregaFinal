@@ -139,6 +139,8 @@ para mas informacion sobre las functions y la base de datos [AzureFunctions](Azu
 
 
 ## Archivos Front End (Angular):
+[Link al README del Front End](./Frontend)
+
 ### Frontend/src/app/main-components
 Carpeta donde se encuentran los componentes que integran la solución.
 ### Frontend/src/app/model
