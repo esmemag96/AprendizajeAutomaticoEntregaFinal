@@ -15,10 +15,10 @@ export const environment = {
   
 
   // Functions Flask
-  scoreApiEndpoint: "http://35.238.158.212:5000/predict",
-  trainApiEndpoint: "http://35.238.158.212:5000/train",
-  textApiEndpoint:  "http://35.238.158.212:5000/sentiment-analysis",
-  graphApiEndpoint: "http://35.238.158.212:5000/getGraphs"
+  scoreApiEndpoint: "http://localhost:5000/predict",
+  trainApiEndpoint: "http://localhost:5000/train",
+  textApiEndpoint:  "http://localhost:5000/sentiment-analysis",
+  graphApiEndpoint: "http://localhost:5000/getGraphs"
 
 };
 
