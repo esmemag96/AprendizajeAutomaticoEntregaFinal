@@ -16,10 +16,10 @@ Navegar al `http://localhost/` para ver la aplicación
 
 ### Componentes
 
-Dashboard: Componente donde se procesarán los datos de las ecoas del profesor 
-Ecoa: Portal donde el alumno podrá contestar las preguntas de cada profesor y por materia
-Login: Portal de login de alumnos
-Login-Admin: Portal de login de profesores
+/dashboard: Componente donde se procesarán los datos de las ecoas del profesor 
+/ecoa: Portal donde el alumno podrá contestar las preguntas de cada profesor y por materia
+/login: Portal de login de alumnos
+/admin: Portal de login de profesores
 
 ### Servicios
 
